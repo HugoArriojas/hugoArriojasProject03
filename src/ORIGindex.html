@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const app = {}
+
+
+app.getProducts = () => {
+
+// creating the url
+const url = new URL('https://fakestoreapi.com/products')
+
+fetch(url)
+    .then((response) => {
+        if (response.ok) {
+        return response.json();
+        }
+    })
+    .then((json) => {
+        console.log(json)
+    })
+  }
+
+;
+app.getProducts()
+
+
+
+/*
+*MVP*: Display products, prices, and images on page, showing descriptions of items on click
+
+*Stretch Goals*: be able to separate items by category, filter out items by rating, be able to change to different currencies, and create a cart that stores items with Firebase
+
+*Pseudo code*
+Create namespace object
+
+Make API Call on page load
+
+Create hero image with store name (Component)
+
+Create side nav with the different item categories (side nav will stick)
+    Listen for click which will filter out categories
+    (Might be better to make API call for chosen category)
+
+Create empty div that will hold the items as they populate the page "inventory"
+
+JS 
+    Create image and separate divs (list elements?) that will have the products appended to them
+    Append the API response image URLS, price, title and rating to their own elements and then append them to divs which will be displayed on the page 
+
+Components to create: 
+    Navs (header and footer) 
+    Hero (for header and footer)
+    Display function (can be used in stretch goals in order to display certain categories)
+    Call API for general data on load
+    Call API fot specific category (Stretch)
+    onClick(show description for items)
+    onClick(filter items by category)
+
+
+
+*/
+    </script>
+    
+</body>
+</html>
