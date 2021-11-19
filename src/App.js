@@ -6,7 +6,7 @@ import ShowProduct from './ShowProduct';
 function App() {
 
   // using useState in order to hold the items from the Fake store API
-  const [item, setItem] = useState()
+  const [item, setItem] = useState([])
 
 
   
@@ -30,28 +30,31 @@ function App() {
     // We want API call to be made once and only on page load, therefore we make an empty dependency array at the end of useEffect
 
 
-
-
   return (
- 
     <div className="App">
-      <h1>Reactive Retail</h1>
+      <header>
+
+      <h1>Reactive <span>Retail</span></h1>
+      <div className="imageTriangle"></div>
+      </header>
+      <div className="productContainers">
       {
         item.map((product) => {
           console.log(product)
           return (
             <ShowProduct 
-              key={product.id} 
-              image={product.image} 
-              title={product.title}
-              price={product.price}
-              rating={product.rating.rate}
-              count={product.rating.count}
-              description={product.description}
-              />
-          )
-        })
-      }
+            key={product.id} 
+            image={product.image} 
+            title={product.title}
+            price={product.price}
+            rating={product.rating.rate}
+            count={product.rating.count}
+            description={product.description}
+            />
+            )
+          })
+        }
+        </div>
     </div>
 
   );
