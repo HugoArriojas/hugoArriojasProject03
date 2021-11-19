@@ -27,6 +27,7 @@ function App() {
       })
       
     }, [])
+    
     // We want API call to be made once and only on page load, therefore we make an empty dependency array at the end of useEffect
 
 
