@@ -25,7 +25,26 @@ h1 span {
   border-bottom: 200px solid #F4A261 ;
 }
 
+/* side Navs */
+li {
+  list-style-type: none;
+}
 
+button {
+  background-color: transparent;
+  border: #EE7766 2px solid;
+  color: #264653;
+  padding: 5px;
+}
+
+button:hover, button:focus {
+  background-color: #EE7766;
+}
+
+
+
+
+/* Main product area */
 .productContainers {
   display: flex;
   justify-content: space-evenly;
@@ -42,12 +61,11 @@ h1 span {
 }
 
 .itemContainer {
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #264653;
   border: #264653 2px solid;
-  max-height: 400px;
   max-width: 30%;
   margin: 1%;
   min-width: 200px;
@@ -60,6 +78,15 @@ h1 span {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+}
+
+.itemDesc {
+  padding: 50% 5% 5% 5%;
+  color: white;
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(0deg, #00000088 80%, #ffffff44 100%);
 }
 
 
@@ -81,11 +108,21 @@ h3 {
   margin: 0;
 }
 
+p {
+  margin: 0;
+}
+
+/* 
 .itemInfo {
   display: flex;
   justify-content: space-evenly;
-}
+} */
 
 .itemDesc {
   display: none;
+}
+
+
+.clicked {
+  border: 5px red solid;
 }
