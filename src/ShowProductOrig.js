@@ -2,17 +2,27 @@
 //ie. key, image, alt(?), title, price, rating, description, count
 // For the hover function
 import {useState} from "react";
-import HoverText from "./HoverText";
 
 function ShowProduct(props) {
 
+    const [style, setStyle] = useState({display: 'none'});
+
+
     return (
         <div key={props.key} class="itemContainer">
-            < HoverText
-                description = {props.description}
-                image = {props.image}
-                title = {props.title}
-            />
+            <div className="itemImage"
+            onMouseEnter={event => {
+                setStyle({display: 'block'});
+            }}
+            onMouseLeave={event => {
+                setStyle({display: 'none'})
+            }}
+            >
+                {/* 🚨🚨🚨 Is this considered inline styling? */}
+                <p class="itemDesc" style={style}>{props.description}</p>
+                <img src={props.image} alt={props.title} />
+                {/* 🚨 What is a good alt caption for this so it's not just the title?? Potentially using the category?? */}
+            </div>
             <div className="itemText">
                 <h3 class="itemTitle">{props.title}</h3>
                 <div className="itemInfo">

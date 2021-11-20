@@ -3,7 +3,7 @@ body {
   background-color: #FFDF90;
 }
 
-header {
+header, footer {
   background-color: #264653;
   display: flex;
   justify-content: space-between;
@@ -25,15 +25,50 @@ h1 span {
   border-bottom: 200px solid #F4A261 ;
 }
 
+/* Main section */
+main {
+  display: flex;
+}
+
+
 /* side Navs */
+
+.sideNav, button {
+  background-color: #2A9D8F;
+  color: #E9C46A;
+}
+
+.sideNav {
+  width: 15%;
+  min-width: 100px;
+}
+
+.navWrapper {
+  position: sticky;
+  position: -webkit-sticky; /* Safari */
+  top:0;
+}
+
+
+.sideNav h3 {
+  text-decoration: underline;
+}
+
+ul {
+  padding: 0;
+  width: 100%;
+}
+
 li {
   list-style-type: none;
 }
 
 button {
+  width: 100%;
   background-color: transparent;
-  border: #EE7766 2px solid;
-  color: #264653;
+  border: none;
+  border-bottom: #EE7766 2px solid;
+  border-top: #EE7766 2px solid;
   padding: 5px;
 }
 
@@ -44,11 +79,12 @@ button:hover, button:focus {
 
 
 
-/* Main product area */
+/* Product area */
 .productContainers {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  width: 80%;
   /* display: grid;
   grid-template-columns: auto auto auto;
   column-gap: 2%;
@@ -82,11 +118,12 @@ button:hover, button:focus {
 }
 
 .itemDesc {
-  padding: 50% 5% 5% 5%;
+  padding: 25% 5% 5% 5%;
   color: white;
+  font-size: 15px;
   position: absolute;
   height: 100%;
-  background: linear-gradient(0deg, #00000088 80%, #ffffff44 100%);
+  background: linear-gradient(0deg,  #00000044 10%, #000000 100%);
 }
 
 
@@ -100,7 +137,6 @@ button:hover, button:focus {
 .itemText {
   background-color: #F4A261;
   padding: 10px;
-  height: 25%;
 }
 
 h3 {
@@ -118,9 +154,6 @@ p {
   justify-content: space-evenly;
 } */
 
-.itemDesc {
-  display: none;
-}
 
 
 .clicked {
