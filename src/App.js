@@ -28,7 +28,6 @@ function App() {
     })
 
       .then((response) => {
-        console.log(response.data)
         // using useState in order to store the received product array
         setItem(response.data)
       })
@@ -66,7 +65,7 @@ function App() {
                 <li><button>★★★★☆+</button></li>
               </ul>
               <h3>Currency</h3>
-              <ul>
+              <ul className="currencies">
                 <li><button id="usd">USD</button></li>
                 <li><button id="cad">CAD</button></li>
                 <li><button id="gbp">GBP</button></li>
@@ -77,9 +76,9 @@ function App() {
         </section>
 
         <section className="productContainers">
+          <h3 className="descriptionExplain">Hover over</h3>
           {
             item.map((product) => {
-              // console.log(product)
               return (
                 <ShowProduct
                   key={product.id}

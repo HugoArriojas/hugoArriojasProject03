@@ -1,3 +1,7 @@
+/* General styling  */
+html {
+  font-family: "Almarai", sans-serif;
+}
 
 body {
   background-color: #FFDF90;
@@ -7,11 +11,14 @@ header, footer {
   background-color: #264653;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 
 h1 {
   color: #E9C46A;
-  margin-left: 10%;
+  margin: 2% 0 2% 5%;
+  font-size: 60px;
 }
 
 h1 span {
@@ -52,11 +59,14 @@ main {
 
 .sideNav h3 {
   text-decoration: underline;
+  text-align: center;
 }
 
 ul {
   padding: 0;
   width: 100%;
+  border-bottom: #EE7766 2px solid;
+  border-top: #EE7766 2px solid;
 }
 
 li {
@@ -76,21 +86,23 @@ button:hover, button:focus {
   background-color: #EE7766;
 }
 
-
+.currencies {
+  display: flex;
+}
 
 
 /* Product area */
+
+.descriptionExplain{
+  display: none;
+}
+
 .productContainers {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 80%;
-  /* display: grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 2%;
-  row-gap: 2%; */
 }
-
 
 .itemContainer, p {
   color: #264653;
@@ -110,6 +122,7 @@ button:hover, button:focus {
 .itemImage {
   height: 100%;
   max-height: 100%;
+  min-height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,13 +130,32 @@ button:hover, button:focus {
   position: relative;
 }
 
+.descriptionButton {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5%;
+  max-width: 50%;
+  background-color: #ee7766b4;
+  color: #264653;
+}
+
 .itemDesc {
-  padding: 25% 5% 5% 5%;
+  padding: 5%;
   color: white;
-  font-size: 15px;
+  font-size: 14px;
   position: absolute;
   height: 100%;
-  background: linear-gradient(0deg,  #00000044 10%, #000000 100%);
+  width: 100%;
+  background: linear-gradient(0deg,  #000000bb 10%, #000000 100%);
+  overflow: visible;
+}
+
+.itemDesc span {
+  color: #EE7766;
+  font-weight: bold;
+  display: none;
 }
 
 
@@ -158,4 +190,17 @@ p {
 
 .clicked {
   border: 5px red solid;
+}
+
+
+@media screen and (min-width: 768px) {
+  .descriptionExplain{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .descriptionButton, .itemDesc span {
+    display: block;
+  }
 }
