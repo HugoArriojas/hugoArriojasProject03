@@ -1,17 +1,24 @@
+/* General styling  */
+html {
+  font-family: "Almarai", sans-serif;
+}
 
 body {
   background-color: #FFDF90;
 }
 
-header {
+header, footer {
   background-color: #264653;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
+
 
 h1 {
   color: #E9C46A;
-  margin-left: 10%;
+  margin: 2% 0 2% 5%;
+  font-size: 60px;
 }
 
 h1 span {
@@ -25,29 +32,88 @@ h1 span {
   border-bottom: 200px solid #F4A261 ;
 }
 
+/* Main section */
+main {
+  display: flex;
+}
+
+
+/* side Navs */
+
+.sideNav, button {
+  background-color: #2A9D8F;
+  color: #E9C46A;
+}
+
+.sideNav {
+  width: 15%;
+  min-width: 100px;
+}
+
+.navWrapper {
+  position: sticky;
+  position: -webkit-sticky; /* Safari */
+  top:0;
+}
+
+
+.sideNav h3 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+  width: 100%;
+  border-bottom: #EE7766 2px solid;
+  border-top: #EE7766 2px solid;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: #EE7766 2px solid;
+  border-top: #EE7766 2px solid;
+  padding: 5px;
+}
+
+button:hover, button:focus {
+  background-color: #EE7766;
+}
+
+.currencies {
+  display: flex;
+}
+
+
+/* Product area */
+
+.descriptionExplain{
+  display: none;
+}
 
 .productContainers {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  /* display: grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 2%;
-  row-gap: 2%; */
+  width: 80%;
 }
-
 
 .itemContainer, p {
   color: #264653;
 }
 
 .itemContainer {
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #264653;
   border: #264653 2px solid;
-  max-height: 400px;
   max-width: 30%;
   margin: 1%;
   min-width: 200px;
@@ -56,10 +122,40 @@ h1 span {
 .itemImage {
   height: 100%;
   max-height: 100%;
+  min-height: 350px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+}
+
+.descriptionButton {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 5%;
+  max-width: 50%;
+  background-color: #ee7766b4;
+  color: #264653;
+}
+
+.itemDesc {
+  padding: 5%;
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(0deg,  #000000bb 10%, #000000 100%);
+  overflow: visible;
+}
+
+.itemDesc span {
+  color: #EE7766;
+  font-weight: bold;
+  display: none;
 }
 
 
@@ -73,7 +169,6 @@ h1 span {
 .itemText {
   background-color: #F4A261;
   padding: 10px;
-  height: 25%;
 }
 
 h3 {
@@ -81,11 +176,31 @@ h3 {
   margin: 0;
 }
 
+p {
+  margin: 0;
+}
+
+/* 
 .itemInfo {
   display: flex;
   justify-content: space-evenly;
+} */
+
+
+
+.clicked {
+  border: 5px red solid;
 }
 
-.itemDesc {
-  display: none;
+
+@media screen and (min-width: 768px) {
+  .descriptionExplain{
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .descriptionButton, .itemDesc span {
+    display: block;
+  }
 }
