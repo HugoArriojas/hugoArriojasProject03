@@ -48,18 +48,13 @@ main {
 .sideNav {
   width: 15%;
   min-width: 100px;
+  text-align: center;
 }
 
 .navWrapper {
   position: sticky;
   position: -webkit-sticky; /* Safari */
   top:0;
-}
-
-
-.sideNav h3 {
-  text-decoration: underline;
-  text-align: center;
 }
 
 ul {
@@ -88,6 +83,18 @@ button:hover, button:focus {
 
 .currencies {
   display: flex;
+  justify-content: space-evenly;
+}
+
+.currencies img {
+  height: 60%;
+  margin-top: 3px;
+  width: 30px;
+  border: transparent 2px solid;
+}
+
+.currencies img:hover, .currencies img:focus {
+  border: #EE7766 2px solid;
 }
 
 
@@ -149,8 +156,16 @@ button:hover, button:focus {
   height: 100%;
   width: 100%;
   background: linear-gradient(0deg,  #000000bb 10%, #000000 100%);
-  overflow: visible;
+  overflow: scroll;
+  /* Hiding scroll bars inside boxes */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 }
+
+.itemDesc::-webkit-scrollbar {
+  display: none;
+}
+
 
 .itemDesc span {
   color: #EE7766;
@@ -178,18 +193,6 @@ h3 {
 
 p {
   margin: 0;
-}
-
-/* 
-.itemInfo {
-  display: flex;
-  justify-content: space-evenly;
-} */
-
-
-
-.clicked {
-  border: 5px red solid;
 }
 
 

@@ -4,19 +4,22 @@ import { useState, useEffect } from 'react';
 import ShowProduct from './ShowProduct';
 import HeaderFooter from './HeaderFooter';
 
-function App() {
+import usdFlag from "./assets/USD-flag.png"
+import cadFlag from "./assets/CAD-flag.png"
+import gbpFlag from "./assets/GBP-flag.png"
 
+
+function App() {
+  
   // using useState in order to hold the items from the Fake store API
   const [item, setItem] = useState([])
   // Holding selected category
   const [categoryInput, setCategoryInput] = useState("");
+  
+  // Holding current currency conversion
+  const [currency, setCurrency] = useState("usd")
+  
 
-  // setting category input to null so that all items appear on page load
-  // const categoryInput = "category/electronics";
-
-  const categoryChange = (select) => {
-    setCategoryInput(select);
-  }
 
 
   useEffect(() => {
@@ -48,35 +51,35 @@ function App() {
           <div className="navWrapper">
             <nav>
               <h2>Sort by:</h2>
-              <h3>Categories</h3>
+              <h3>Categories:</h3>
               <ul>
-                {/* How do I revert back to none?? */}
-                <li><button onClick={() => categoryChange("")}>All</button></li>
-                <li><button onClick={() => categoryChange("category/electronics")}>Electronics</button></li>
-                <li><button onClick={() => categoryChange("category/jewelery")}>Jewelry</button></li>
-                <li><button onClick={() => categoryChange("category/men's%20clothing")}>Men's clothing</button></li>
-                <li><button onClick={() => categoryChange("category/women's%20clothing")}>Women's clothing</button></li>
+                <li><button onClick = {() => setCategoryInput("")}>All</button></li>
+                <li><button onClick = {() => setCategoryInput("category/electronics")}>Electronics</button></li>
+                <li><button onClick = {() => setCategoryInput("category/jewelery")}>Jewelry</button></li>
+                <li><button onClick = {() => setCategoryInput("category/men's%20clothing")}>Men's clothing</button></li>
+                <li><button onClick = {() => setCategoryInput("category/women's%20clothing")}>Women's clothing</button></li>
               </ul>
-              <h3>Rating</h3>
+              {/* <h3>Rating:</h3>
               <ul>
                 <li><button>★☆☆☆☆+</button></li>
                 <li><button>★★☆☆☆+</button></li>
                 <li><button>★★★☆☆+</button></li>
                 <li><button>★★★★☆+</button></li>
-              </ul>
-              <h3>Currency</h3>
+              </ul> */}
+              <h3>Currency:</h3>
               <ul className="currencies">
-                <li><button id="usd">USD</button></li>
-                <li><button id="cad">CAD</button></li>
-                <li><button id="gbp">GBP</button></li>
+                <li><img src={usdFlag} alt="Flag of the USA" onClick = {() => setCurrency("usd")}/></li>
+                <li><img src={cadFlag} alt="Flag of Canada" onClick = {() => setCurrency("cad")}/></li>
+                <li><img src={gbpFlag} alt="Flag of Great Britain" onClick = {() => setCurrency("gbp")}/></li>
               </ul>
             </nav>
+        <h3 className="descriptionExplain">Hover over products for desciptions</h3>
+          {/* end of navWrapper */}
           </div>
 
         </section>
 
         <section className="productContainers">
-          <h3 className="descriptionExplain">Hover over</h3>
           {
             item.map((product) => {
               return (
@@ -88,6 +91,7 @@ function App() {
                   rating={product.rating.rate}
                   count={product.rating.count}
                   description={product.description}
+                  currency = {currency}
                 />
               )
             })
