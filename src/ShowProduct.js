@@ -7,18 +7,22 @@ import HoverText from "./HoverText";
 function ShowProduct(props) {
 
     return (
-        <div key={props.key} className="itemContainer">
+        <div className="itemContainer">
             < HoverText
-                description = {props.description}
-                image = {props.image}
-                title = {props.title}
+                description={props.description}
+                image={props.image}
+                title={props.title}
             />
             <div className="itemText">
                 <h3 className="itemTitle">{props.title}</h3>
                 <div className="itemInfo">
-                    < CurrencyChanger 
-                        price = {props.price}
-                    />
+                    {/* <p className="itemPrice">{props.price}</p> */}
+                    <div className="priceBubble">
+                        < CurrencyChanger
+                            price={props.price}
+                            currency={props.currency}
+                        />
+                    </div>
                     {/*🚨 Will have to create ::before pseudoclass to represent current currency*/}
                     <p className="itemRating">Rating: {props.rating}</p>
                     <p className="itemCount">Stock: {props.count}</p>
