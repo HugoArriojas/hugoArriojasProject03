@@ -16,9 +16,10 @@ function ShowProduct(props) {
             <div className="itemText">
                 <h3 className="itemTitle">{props.title}</h3>
                 <div className="itemInfo">
-                    < CurrencyChanger 
+                <p className="itemPrice">{props.price}</p>
+                    {/* < CurrencyChanger 
                         price = {props.price}
-                    />
+                    /> */}
                     {/*🚨 Will have to create ::before pseudoclass to represent current currency*/}
                     <p className="itemRating">Rating: {props.rating}</p>
                     <p className="itemCount">Stock: {props.count}</p>

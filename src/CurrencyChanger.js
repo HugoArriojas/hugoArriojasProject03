@@ -3,6 +3,19 @@ import { useState } from "react"
 // 🚨🚨🚨 This does not work
 
 function CurrencyChanger(props) {
+    
+    
+    return (
+        
+        
+        <p className="itemPrice">{props.price}</p>
+        
+        )
+    }
+    
+    export default CurrencyChanger;
+    
+    
     //     usd: {
     //       exchange: 1,
     //       symbol: `$`
@@ -16,17 +29,5 @@ function CurrencyChanger(props) {
     //       symbol: `£`
     //     }
     
-
-
-    return (
-
-
-        <p className="itemPrice">{props.price}</p>
-
-    )
-}
-
-export default CurrencyChanger;
-
-
-
+    
+    
