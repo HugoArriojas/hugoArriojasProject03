@@ -19,7 +19,7 @@ function App() {
   // Holding current currency conversion
   const [currency, setCurrency] = useState("usd")
   
-
+  
 
 
   useEffect(() => {
@@ -84,7 +84,7 @@ function App() {
             item.map((product) => {
               return (
                 <ShowProduct
-                  key={product.id}
+                  anything={product.id} // passing through as key (transform evenly)
                   image={product.image}
                   title={product.title}
                   price={product.price}
