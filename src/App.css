@@ -56,14 +56,42 @@ main {
 /* side Navs */
 
 .sideNav, button {
-  background-color: #2A9D8F;
   color: #E9C46A;
+  background-color: #2A9D8F;
+  cursor: pointer;
 }
 
 .sideNav {
   width: 15%;
   min-width: 100px;
   text-align: center;
+}
+
+.btn-slide {
+  position: relative;
+  z-index: 1;
+  --accent-color: #264653;
+}
+
+
+.btn-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index:-1;
+  background-color: var(--accent-color);
+  
+  transition: transform 300ms ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.btn-slide:hover::before, 
+.btn-slide:focus::before {
+  transform: scaleX(1)
 }
 
 .navWrapper {
@@ -92,9 +120,7 @@ button {
   padding: 10% 4%;
 }
 
-button:hover, button:focus {
-  background-color: #EE7766;
-}
+
 
 .currencies {
   display: flex;
@@ -123,7 +149,7 @@ button:hover, button:focus {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 80%;
+  width: 65%;
 }
 
 .itemContainer, p {
@@ -205,8 +231,8 @@ button:hover, button:focus {
 .priceBubble {
   background-color: #264653;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 1px;
+  bottom: 1px;
   border-radius: 50px;
   padding: 2%;
   width: 40%;
@@ -216,6 +242,7 @@ button:hover, button:focus {
 
 .itemPrice {
   color: #E9C46A;
+  font-weight: bold;
 }
 
 

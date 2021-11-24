@@ -10,16 +10,15 @@ import gbpFlag from "./assets/GBP-flag.png"
 
 
 function App() {
-  
+
   // using useState in order to hold the items from the Fake store API
   const [item, setItem] = useState([])
   // Holding selected category
   const [categoryInput, setCategoryInput] = useState("");
-  
   // Holding current currency conversion
   const [currency, setCurrency] = useState("usd")
-  
-  
+
+
 
 
   useEffect(() => {
@@ -29,19 +28,16 @@ function App() {
       url: `https://fakestoreapi.com/products/${categoryInput}`,
       responseType: "json",
     })
-
       .then((response) => {
         // using useState in order to store the received product array
         setItem(response.data)
       })
-
   }, [categoryInput])
   // We want API call to be made once and only on page load, therefore we make an empty dependency array at the end of useEffect
 
 
   return (
     <div className="App">
-
 
       <header>
         <HeaderFooter />
@@ -53,11 +49,21 @@ function App() {
               <h2>Sort by:</h2>
               <h3>Categories:</h3>
               <ul>
-                <li><button onClick = {() => setCategoryInput("")}>All</button></li>
-                <li><button onClick = {() => setCategoryInput("category/electronics")}>Electronics</button></li>
-                <li><button onClick = {() => setCategoryInput("category/jewelery")}>Jewelry</button></li>
-                <li><button onClick = {() => setCategoryInput("category/men's%20clothing")}>Men's clothing</button></li>
-                <li><button onClick = {() => setCategoryInput("category/women's%20clothing")}>Women's clothing</button></li>
+                <li>
+                  <button className="btn-slide" onClick={() => setCategoryInput("")}>All</button>
+                </li>
+                <li>
+                  <button className="btn-slide" onClick={() => setCategoryInput("category/electronics")}>Electronics</button>
+                </li>
+                <li>
+                  <button className="btn-slide" onClick={() => setCategoryInput("category/jewelery")}>Jewelry</button>
+                </li>
+                <li>
+                  <button className="btn-slide" onClick={() => setCategoryInput("category/men's%20clothing")}>Men's clothing</button>
+                </li>
+                <li>
+                  <button className="btn-slide" onClick={() => setCategoryInput("category/women's%20clothing")}>Women's clothing</button>
+                </li>
               </ul>
               {/* <h3>Rating:</h3>
               <ul>
@@ -69,23 +75,21 @@ function App() {
               <h3>Currency:</h3>
               <ul className="currencies">
                 <li>
-                  <img src={usdFlag} alt="Flag of the USA" 
-                  onClick = {() => setCurrency("usd")}/>
+                  <img src={usdFlag} alt="Flag of the USA"
+                    onClick={() => setCurrency("usd")} />
                 </li>
                 <li>
-                  <img src={cadFlag} alt="Flag of Canada" 
-                  onClick = {() => setCurrency("cad")}/>
+                  <img src={cadFlag} alt="Flag of Canada"
+                    onClick={() => setCurrency("cad")} />
                 </li>
                 <li>
-                  <img src={gbpFlag} alt="Flag of Great Britain" 
-                  onClick = {() => setCurrency("gbp")}/>
+                  <img src={gbpFlag} alt="Flag of Great Britain"
+                    onClick={() => setCurrency("gbp")} />
                 </li>
               </ul>
             </nav>
-        <h3 className="descriptionExplain">Hover over products for desciptions</h3>
-          {/* end of navWrapper */}
-          </div>
-
+            <h3 className="descriptionExplain">Hover over products for desciptions</h3>
+          </div> {/* end of sidenav Wrapper */}
         </section>
 
         <section className="productContainers">
@@ -93,12 +97,12 @@ function App() {
             item.map((product) => {
               let currentPrice = 0;
               if (currency === "usd") {
-                currentPrice =`$ ${(product.price).toFixed(2)} (USD)`
+                currentPrice = `$${(product.price).toFixed(2)} (USD)`
               } else if (currency === "cad") {
-              currentPrice = `$ ${(product.price*1.26).toFixed(2)} (CAD)`
-            } else {
-              currentPrice = `£ ${(product.price*0.74).toFixed(2)} (GBP)`
-            }              
+                currentPrice = `$${(product.price * 1.26).toFixed(2)} (CAD)`
+              } else {
+                currentPrice = `£${(product.price * 0.74).toFixed(2)} (GBP)`
+              }
 
 
               return (
@@ -110,7 +114,7 @@ function App() {
                   rating={product.rating.rate}
                   count={product.rating.count}
                   description={product.description}
-                  currency = {currency}
+                  currency={currency}
                 />
               )
             })
