@@ -15,12 +15,12 @@ function HoverText(props) {
       onMouseLeave={() => setVisibility(false)}
       onFocus={() => setVisibility(true)}
       onBlur={() => setVisibility(false)}
-      onClick={() => setVisibility(false)}
+      // onClick={() => setVisibility(false)}
       
       >
         {visibility && (
           <p className="itemDesc" 
-          onMouseLeave={() => setVisibility(false)}
+          // onMouseLeave={() => setVisibility(false)}
           onClick={() => setVisibility(false)}
           onBlur={() => setVisibility(false)}
           >
@@ -35,7 +35,6 @@ function HoverText(props) {
         </button>
         <img src={props.image} alt={props.title} />
       </div>
-      {/* 🚨 What is a good alt caption for this so it's not just the title?? Potentially using the category?? */}
     </>
   );
 }
