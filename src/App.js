@@ -93,7 +93,7 @@ function App() {
             item.map((product) => {
               let currentPrice = 0;
               if (currency === "usd") {
-                currentPrice =`$ ${product.price} (USD)`
+                currentPrice =`$ ${(product.price).toFixed(2)} (USD)`
               } else if (currency === "cad") {
               currentPrice = `$ ${(product.price*1.26).toFixed(2)} (CAD)`
             } else {

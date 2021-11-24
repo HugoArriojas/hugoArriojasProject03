@@ -225,6 +225,11 @@ button:hover, button:focus {
     padding: 20% 5%;
   }
 
+  .currencies {
+    flex-direction: column;
+  }
+
+
   .descriptionExplain{
     display: none;
   }
