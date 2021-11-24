@@ -7,12 +7,6 @@ body {
   background-color: #FFDF90;
 }
 
-header, footer {
-  background-color: #264653;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 
 h1 {
@@ -23,6 +17,24 @@ h1 {
 
 h1 span {
   color: #EE7766;
+}
+
+
+h3 {
+  font-size: 15px;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/* Header and footer styling */
+header, footer {
+  background-color: #264653;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .imageTriangle {
@@ -74,7 +86,7 @@ button {
   border: none;
   border-bottom: #EE7766 2px solid;
   border-top: #EE7766 2px solid;
-  padding: 5px;
+  padding: 10% 4%;
 }
 
 button:hover, button:focus {
@@ -101,7 +113,7 @@ button:hover, button:focus {
 /* Product area */
 
 .descriptionExplain{
-  display: none;
+  display: block;
 }
 
 .productContainers {
@@ -150,7 +162,7 @@ button:hover, button:focus {
 
 .itemDesc {
   padding: 5%;
-  color: white;
+  color: white;   
   font-size: 14px;
   position: absolute;
   height: 100%;
@@ -184,25 +196,36 @@ button:hover, button:focus {
 .itemText {
   background-color: #F4A261;
   padding: 10px;
+  position: relative;
 }
 
-h3 {
-  font-size: 15px;
-  margin: 0;
+.priceBubble {
+  background-color: #264653;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  padding: 2%;
+  width: 40%;
+  text-align: center;
+
 }
 
-p {
-  margin: 0;
+.itemPrice {
+  color: #E9C46A;
 }
 
-
-@media screen and (min-width: 768px) {
-  .descriptionExplain{
-    display: block;
-  }
-}
 
 @media screen and (max-width: 768px) {
+  
+  button {
+    padding: 20% 5%;
+  }
+
+  .descriptionExplain{
+    display: none;
+  }
+
   .descriptionButton, .itemDesc span {
     display: block;
   }

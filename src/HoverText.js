@@ -12,8 +12,9 @@ function HoverText(props) {
       {/* Media queries made to have mouseover descriptions on larger screens */}
       <div className="itemImage"
       onMouseEnter={() => setVisibility(true)}
-      onFocus={() => setVisibility(true)}
       onMouseLeave={() => setVisibility(false)}
+      onFocus={() => setVisibility(true)}
+      onBlur={() => setVisibility(false)}
       onClick={() => setVisibility(false)}
       
       >
@@ -21,6 +22,7 @@ function HoverText(props) {
           <p className="itemDesc" 
           onMouseLeave={() => setVisibility(false)}
           onClick={() => setVisibility(false)}
+          onBlur={() => setVisibility(false)}
           >
             <span> Tap/Click to hide</span>
             {props.description}  
