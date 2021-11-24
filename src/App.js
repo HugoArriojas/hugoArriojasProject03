@@ -68,9 +68,18 @@ function App() {
               </ul> */}
               <h3>Currency:</h3>
               <ul className="currencies">
-                <li><img src={usdFlag} alt="Flag of the USA" onClick = {() => setCurrency("usd")}/></li>
-                <li><img src={cadFlag} alt="Flag of Canada" onClick = {() => setCurrency("cad")}/></li>
-                <li><img src={gbpFlag} alt="Flag of Great Britain" onClick = {() => setCurrency("gbp")}/></li>
+                <li>
+                  <img src={usdFlag} alt="Flag of the USA" 
+                  onClick = {() => setCurrency("usd")}/>
+                </li>
+                <li>
+                  <img src={cadFlag} alt="Flag of Canada" 
+                  onClick = {() => setCurrency("cad")}/>
+                </li>
+                <li>
+                  <img src={gbpFlag} alt="Flag of Great Britain" 
+                  onClick = {() => setCurrency("gbp")}/>
+                </li>
               </ul>
             </nav>
         <h3 className="descriptionExplain">Hover over products for desciptions</h3>
@@ -82,12 +91,22 @@ function App() {
         <section className="productContainers">
           {
             item.map((product) => {
+              let currentPrice = 0;
+              if (currency === "usd") {
+                currentPrice = product.price
+              } else if (currency === "cad") {
+              currentPrice = product.price*1.26
+            } else {
+              currentPrice = product.price*0.74
+            }              
+
+
               return (
                 <ShowProduct
                   anything={product.id} // passing through as key (transform evenly)
                   image={product.image}
                   title={product.title}
-                  price={product.price}
+                  price={currentPrice}
                   rating={product.rating.rate}
                   count={product.rating.count}
                   description={product.description}

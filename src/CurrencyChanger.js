@@ -1,23 +1,40 @@
-// import { useState } from "react"
-// import {currency} from "./App.js"
-// 🚨🚨🚨 This does not work
+import { useState, useEffect } from "react"
+// Done with the help of Joey Deol
 
 function CurrencyChanger(props) {
+
+    const [priceState, setPriceState] = useState(props)
+
+    useEffect(() => {
+        convertPrice(props.currency, props.price)
+
+    },[props])
     
+    const convertPrice = function(currency, price){
+        if (currency === "usd") {
+            setPriceState({
+                price:price,
+                currency:currency
+            })
+        } else if (currency === "cad") {
+            setPriceState({
+                price:price*1.26,
+                currency:currency
+            })
+        } else {
+            setPriceState({
+                price:price*0.74,
+                currency:currency
+            })
+        }
+    }
     
     return (
-        
-            // if ({props.currency} = "usd") {
-            //     <p className="itemPrice">$ {props.price}</p>
-            // } else if ({props.currency} = "cad") {
-            //     <p className="itemPrice">$ {props.price}*1.26</p>
-            // } else {
-            //     <p className="itemPrice">£ {props.price}*0.74</p>
-            // }
-
-
+        <>
+            <p className="itemPrice">{props.price}</p>
             <p className="itemPrice">{props.currency}</p>
-
+            {/* <p>{priceState.price}</p> */}
+        </>
         )
     }
     
