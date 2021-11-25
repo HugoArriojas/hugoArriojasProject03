@@ -221,8 +221,9 @@ button {
 }
 
 .itemContainer {
-  max-width: 30%;
+  max-width: 20%;
   min-width: 200px;
+  max-height: 600px;
   background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
@@ -251,7 +252,7 @@ button {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 5%;
+  padding: 3%;
 }
 
 .itemDesc {
