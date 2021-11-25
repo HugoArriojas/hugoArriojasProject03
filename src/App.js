@@ -2,24 +2,22 @@ import './App.css';
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import ShowProduct from './ShowProduct';
-import HeaderFooter from './HeaderFooter';
 
 import usdFlag from "./assets/USD-flag.png"
 import cadFlag from "./assets/CAD-flag.png"
 import gbpFlag from "./assets/GBP-flag.png"
+import initials from "./assets/initials.png"
 
 
 function App() {
-
   // using useState in order to hold the items from the Fake store API
   const [item, setItem] = useState([])
+  // Checks if API response has been received
+  const [loading, setLoading] = useState(false);
   // Holding selected category
   const [categoryInput, setCategoryInput] = useState("");
   // Holding current currency conversion
   const [currency, setCurrency] = useState("usd")
-
-
-
 
   useEffect(() => {
     // Calling the API using Axios
@@ -31,22 +29,28 @@ function App() {
       .then((response) => {
         // using useState in order to store the received product array
         setItem(response.data)
+        // Once API call is received, change useState as "loaded"
+        setLoading(true);
       })
+      // We want API call to be made with every category change
   }, [categoryInput])
-  // We want API call to be made once and only on page load, therefore we make an empty dependency array at the end of useEffect
 
 
   return (
     <div className="App">
 
       <header>
-        <HeaderFooter />
+        <h1>Reactive <span>Retail</span></h1>
+        <div className="imageTriangle"></div>
       </header>
+
       <main>
         <section className="sideNav">
           <div className="navWrapper">
             <nav>
               <h2>Sort by:</h2>
+
+              {/* setCategoryInput passes on the values and makes a new API call */}
               <h3>Categories:</h3>
               <ul>
                 <li>
@@ -65,13 +69,8 @@ function App() {
                   <button className="btn-slide" onClick={() => setCategoryInput("category/women's%20clothing")}>Women's clothing</button>
                 </li>
               </ul>
-              {/* <h3>Rating:</h3>
-              <ul>
-                <li><button>★☆☆☆☆+</button></li>
-                <li><button>★★☆☆☆+</button></li>
-                <li><button>★★★☆☆+</button></li>
-                <li><button>★★★★☆+</button></li>
-              </ul> */}
+
+              {/* Set Currency changes the current currency state */}
               <h3>Currency:</h3>
               <ul className="currencies">
                 <li>
@@ -93,7 +92,9 @@ function App() {
         </section>
 
         <section className="productContainers">
-          {
+          {/* Ternary conditional checks if the API has received a response 
+          This conditional done with the help of Esther Edell*/}
+          {loading ? (
             item.map((product) => {
               let currentPrice = 0;
               if (currency === "usd") {
@@ -104,10 +105,9 @@ function App() {
                 currentPrice = `£${(product.price * 0.74).toFixed(2)} (GBP)`
               }
 
-
               return (
                 <ShowProduct
-                  anything={product.id} // passing through as key (transform evenly)
+                  key={product.id} // passing through as key
                   image={product.image}
                   title={product.title}
                   price={currentPrice}
@@ -118,13 +118,45 @@ function App() {
                 />
               )
             })
+          )
+            : ( // if loading state is not true (meaning loaded) then placeholder text is rendered
+              <div className="loading">
+                <h2 className="loadingText">Please wait for API Response</h2>
+                {/* Empty divs below are part of the CSS loading effect */}
+                <div className="loadRipple">
+                  <div></div> 
+                  <div></div>
+                </div>
+              </div>
+            )
           }
         </section>
       </main>
+
       <footer>
-        <HeaderFooter />
+      <h1>Reactive <span>Retail</span></h1>
+        <div className="imageTriangle"></div>
       </footer>
 
+      <section className="creditSocials">
+        <p>
+          Made at <a href="https://junocollege.com/">Juno College</a>
+        </p>
+        <div className="socials">
+
+          <a href="http://www.hugoa.dev">
+            <img src={initials} alt="Website creator's initials, HA" className="initials" />
+          </a>
+
+          <a href="https://github.com/HugoArriojas/hugoArriojasProject03">
+            <i className="fab fa-github"></i>
+          </a>
+
+          <a href="https://www.linkedin.com/in/hugo-arriojas-53613120a">
+            <i className="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </section>
 
       {/* </App> */}
     </div>

@@ -6,7 +6,7 @@ import HoverText from "./HoverText";
 function ShowProduct(props) {
 
     return (
-        <div className="itemContainer">
+        <div className="itemContainer" key={props.key}>
             < HoverText
                 description={props.description}
                 image={props.image}
@@ -18,8 +18,8 @@ function ShowProduct(props) {
                     <div className="priceBubble">
                         <p className="itemPrice">{props.price}</p>
                     </div>
-                    <p className="itemRating">Rating: {props.rating}</p>
-                    <p className="itemCount">Stock: {props.count}</p>
+                    <p className="itemRating">{props.rating} ★</p>
+                    <p className="itemCount">({props.count} ratings)</p>
                 </div>
             </div>
         </div>
