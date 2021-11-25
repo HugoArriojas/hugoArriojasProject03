@@ -32,7 +32,7 @@ function App() {
         // Once API call is received, change useState as "loaded"
         setLoading(true);
       })
-      // We want API call to be made with every category change
+    // We want API call to be made with every category change
   }, [categoryInput])
 
 
@@ -124,7 +124,7 @@ function App() {
                 <h2 className="loadingText">Please wait for API Response</h2>
                 {/* Empty divs below are part of the CSS loading effect */}
                 <div className="loadRipple">
-                  <div></div> 
+                  <div></div>
                   <div></div>
                 </div>
               </div>
@@ -134,7 +134,7 @@ function App() {
       </main>
 
       <footer>
-      <h1>Reactive <span>Retail</span></h1>
+        <h1>Reactive <span>Retail</span></h1>
         <div className="imageTriangle"></div>
       </footer>
 

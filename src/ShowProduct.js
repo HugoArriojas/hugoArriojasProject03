@@ -1,6 +1,5 @@
-// Props here represent the props that we passed in App.js
-//ie. key, image, alt(?), title, price, rating, description, count
-// For the hover function
+// Component to render the items on the page
+
 import HoverText from "./HoverText";
 
 function ShowProduct(props) {

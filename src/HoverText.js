@@ -6,36 +6,36 @@ import { useState } from "react";
 function HoverText(props) {
   // Sets state based on visibility
   const [visibility, setVisibility] = useState(false);
-  
+
   // Making the images tabable for accessibility as there is no "description" button on larger screens 
   const divs = document.getElementsByClassName('itemImage');
-  for (let i = 0; i < divs.length; i++){
-      divs[i].setAttribute('tabindex', '0');
+  for (let i = 0; i < divs.length; i++) {
+    divs[i].setAttribute('tabindex', '0');
   }
 
   return (
     <>
       {/* Media queries made to have mouseover descriptions on larger screens, description buttons on smaller screens */}
       <div className="itemImage"
-      onMouseEnter={() => setVisibility(true)}
-      onMouseLeave={() => setVisibility(false)}
-      onFocus={() => setVisibility(true)}
-      onBlur={() => setVisibility(false)}
-      // Allows description to be hidden on double click even on mouseover
-      onClick={() => setVisibility(false)}
+        onMouseEnter={() => setVisibility(true)}
+        onMouseLeave={() => setVisibility(false)}
+        onFocus={() => setVisibility(true)}
+        onBlur={() => setVisibility(false)}
+        // Allows description to be hidden on double click even on mouseover
+        onClick={() => setVisibility(false)}
       >
         {visibility && (
-          <p className="itemDesc" 
-          onClick={() => setVisibility(false)}
-          onBlur={() => setVisibility(false)}
+          <p className="itemDesc"
+            onClick={() => setVisibility(false)}
+            onBlur={() => setVisibility(false)}
           >
             <span> Mobile users: tap to hide</span>
-            {props.description}  
+            {props.description}
           </p>
         )}
         {/* Description show button appears on smaller screeens in order to accomodate mobile users */}
         <button className="descriptionButton"
-        onClick={() => setVisibility(true)}
+          onClick={() => setVisibility(true)}
         >
           Description
         </button>
