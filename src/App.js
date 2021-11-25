@@ -75,14 +75,17 @@ function App() {
               <ul className="currencies">
                 <li>
                   <img src={usdFlag} alt="Flag of the USA"
+                  aria-label="change currency to USD"
                     onClick={() => setCurrency("usd")} />
                 </li>
                 <li>
                   <img src={cadFlag} alt="Flag of Canada"
+                  aria-label="change currency to CAD"
                     onClick={() => setCurrency("cad")} />
                 </li>
                 <li>
                   <img src={gbpFlag} alt="Flag of Great Britain"
+                  aria-label="change currency to GBP"
                     onClick={() => setCurrency("gbp")} />
                 </li>
               </ul>

@@ -359,3 +359,9 @@ a:hover {
   }
 }
   
+@media screen and (max-height: 590px)  {
+  /* Error handling: if screen is too small vertically, can still scroll through categories, loses sticky property */
+  .sideNav {
+    overflow: scroll;
+  }
+}
