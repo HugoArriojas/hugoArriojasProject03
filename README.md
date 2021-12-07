@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# Reactive Retail
+
+Reactive Retail is a mock retail site built entirely in React using the FakeStore API.
+In the app, users are able to filter through a variety of products via category and then convert product prices to different currencies.
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
