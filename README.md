@@ -3,7 +3,17 @@
 Reactive Retail is a mock retail site built entirely in React using the FakeStore API.
 In the app, users are able to filter through a variety of products via category and then convert product prices to different currencies.
 
+I want to implement the following features in the future:
+- Firebase integration for an "add to cart" function
+- Neater "expand details" functionality
 
+If you have any questions, want to see my other projects, or just want to reach out, please feel free to contact me on my site at https://www.hugoa.dev/
+
+Thank you for checking out my Repo!
+
+
+
+****************************************************************************************
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
