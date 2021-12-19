@@ -9,8 +9,6 @@ function SideNav(props) {
     
       // Holding selected category
       const [categoryInput, setCategoryInput] = useState("");
-      // Holding current currency conversion
-      const [currency, setCurrency] = useState("usd")
 
   return (
       <section className="sideNav">
@@ -22,19 +20,19 @@ function SideNav(props) {
               <h3>Categories:</h3>
               <ul>
                 <li>
-                  <button className="btn-slide" onClick={() => setCategoryInput("")}>All</button>
+                  <button className="btn-slide" onClick={() => props.handleCategory("")}>All</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => setCategoryInput("category/electronics")}>Electronics</button>
+                  <button className="btn-slide" onClick={() => props.handleCategory("category/electronics")}>Electronics</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => setCategoryInput("category/jewelery")}>Jewelry</button>
+                  <button className="btn-slide" onClick={() => props.handleCategory("category/jewelery")}>Jewelry</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => setCategoryInput("category/men's%20clothing")}>Men's clothing</button>
+                  <button className="btn-slide" onClick={() => props.handleCategory("category/men's%20clothing")}>Men's clothing</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => setCategoryInput("category/women's%20clothing")}>Women's clothing</button>
+                  <button className="btn-slide" onClick={() => props.handleCategory("category/women's%20clothing")}>Women's clothing</button>
                 </li>
               </ul>
 
@@ -44,17 +42,17 @@ function SideNav(props) {
                 <li>
                   <img src={usdFlag} alt="Flag of the USA"
                   aria-label="change currency to USD"
-                    onClick={() => setCurrency("usd")} />
+                    onClick={() => props.handleCurrency("usd")} />
                 </li>
                 <li>
                   <img src={cadFlag} alt="Flag of Canada"
                   aria-label="change currency to CAD"
-                    onClick={() => setCurrency("cad")} />
+                    onClick={() => props.handleCurrency("cad")} />
                 </li>
                 <li>
                   <img src={gbpFlag} alt="Flag of Great Britain"
                   aria-label="change currency to GBP"
-                    onClick={() => setCurrency("gbp")} />
+                    onClick={() => props.handleCurrency("gbp")} />
                 </li>
               </ul>
             </nav>

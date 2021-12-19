@@ -37,9 +37,12 @@ function App() {
     // We want API call to be made with every category change
   }, [categoryInput])
 
+  const handleCategory = (cat) => {
+    setCategoryInput(cat);
+  }
 
-  const handleCurrency = (e) => {
-    setCurrency(e.target.value)
+  const handleCurrency = (cur) => {
+    setCurrency(cur);
   }
 
   return (
@@ -53,6 +56,7 @@ function App() {
       <main>
         <SideNav
           handleCurrency = {handleCurrency}
+          handleCategory = {handleCategory}
             />
         {/* <section className="sideNav">
           <div className="navWrapper">
