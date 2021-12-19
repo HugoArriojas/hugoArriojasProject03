@@ -38,6 +38,10 @@ function App() {
   }, [categoryInput])
 
 
+  const handleCurrency = (e) => {
+    setCurrency(e.target.value)
+  }
+
   return (
     <div className="App">
 
@@ -48,15 +52,15 @@ function App() {
 
       <main>
         <SideNav
-          currency = {currency}
+          handleCurrency = {handleCurrency}
             />
-        <section className="sideNav">
+        {/* <section className="sideNav">
           <div className="navWrapper">
             <nav>
-              <h2>Sort by:</h2>
+              <h2>Sort by:</h2> */}
 
               {/* setCategoryInput passes on the values and makes a new API call */}
-              <h3>Categories:</h3>
+              {/* <h3>Categories:</h3>
               <ul>
                 <li>
                   <button className="btn-slide" onClick={() => setCategoryInput("")}>All</button>
@@ -73,10 +77,10 @@ function App() {
                 <li>
                   <button className="btn-slide" onClick={() => setCategoryInput("category/women's%20clothing")}>Women's clothing</button>
                 </li>
-              </ul>
+              </ul> */}
 
               {/* Set Currency changes the current currency state */}
-              <h3>Currency:</h3>
+              {/* <h3>Currency:</h3>
               <ul className="currencies">
                 <li>
                   <img src={usdFlag} alt="Flag of the USA"
@@ -96,9 +100,9 @@ function App() {
               </ul>
             </nav>
             <h3 className="descriptionExplain">Hover over products for desciptions</h3>
-          </div> 
+          </div>  */}
           {/* end of sidenav Wrapper */}
-        </section>
+        {/* </section> */}
 
         <section className="productContainers">
           {/* Ternary conditional checks if the API has received a response 
