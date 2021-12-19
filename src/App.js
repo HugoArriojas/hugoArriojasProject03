@@ -1,12 +1,14 @@
 import './App.css';
 import axios from "axios";
 import { useState, useEffect } from 'react';
-import ShowProduct from './ShowProduct';
+import ShowProduct from './components/ShowProduct';
+import SideNav from './components/SideNav';
 
+
+import initials from "./assets/initials.png"
 import usdFlag from "./assets/USD-flag.png"
 import cadFlag from "./assets/CAD-flag.png"
 import gbpFlag from "./assets/GBP-flag.png"
-import initials from "./assets/initials.png"
 
 
 function App() {
@@ -45,6 +47,9 @@ function App() {
       </header>
 
       <main>
+        <SideNav
+          currency = {currency}
+            />
         <section className="sideNav">
           <div className="navWrapper">
             <nav>
@@ -91,7 +96,8 @@ function App() {
               </ul>
             </nav>
             <h3 className="descriptionExplain">Hover over products for desciptions</h3>
-          </div> {/* end of sidenav Wrapper */}
+          </div> 
+          {/* end of sidenav Wrapper */}
         </section>
 
         <section className="productContainers">
