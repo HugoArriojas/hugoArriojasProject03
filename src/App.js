@@ -3,9 +3,7 @@ import { useState} from 'react';
 import SideNav from './components/SideNav';
 import HeaderFooter from './components/HeaderFooter';
 import ProductContainers from './components/ProductContainers';
-
-
-import initials from "./assets/initials.png"
+import CreditSocials from './components/CreditSocials';
 
 function App() {
   // Holding selected category
@@ -39,26 +37,7 @@ function App() {
       </main>
 
       <HeaderFooter/>
-
-      <section className="creditSocials">
-        <p>
-          Made at <a href="https://junocollege.com/">Juno College</a>
-        </p>
-        <div className="socials">
-
-          <a href="http://www.hugoa.dev">
-            <img src={initials} alt="Website creator's initials, HA" className="initials" />
-          </a>
-
-          <a href="https://github.com/HugoArriojas/hugoArriojasProject03">
-            <i className="fab fa-github"></i>
-          </a>
-
-          <a href="https://www.linkedin.com/in/hugo-arriojas-53613120a">
-            <i className="fab fa-linkedin"></i>
-          </a>
-        </div>
-      </section>
+      <CreditSocials/>
 
       {/* </App> */}
     </div>
