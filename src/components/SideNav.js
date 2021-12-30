@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import usdFlag from "../assets/USD-flag.png"
 import cadFlag from "../assets/CAD-flag.png"
 import gbpFlag from "../assets/GBP-flag.png"
@@ -7,15 +6,11 @@ import gbpFlag from "../assets/GBP-flag.png"
 
 function SideNav(props) {
     
-      // Holding selected category
-      const [categoryInput, setCategoryInput] = useState("");
-
   return (
       <section className="sideNav">
           <div className="navWrapper">
             <nav>
               <h2>Sort by:</h2>
-
               {/* setCategoryInput passes on the values and makes a new API call */}
               <h3>Categories:</h3>
               <ul>

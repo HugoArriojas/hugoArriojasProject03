@@ -261,7 +261,8 @@ p {
 }
 
 /* Header and footer styling */
-header, footer {
+.header, 
+.footer {
   width: 100%;
   background-color: #264653;
   display: flex;
