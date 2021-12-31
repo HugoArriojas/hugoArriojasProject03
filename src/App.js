@@ -11,34 +11,32 @@ function App() {
   // Holding current currency conversion
   const [currency, setCurrency] = useState("usd")
 
+  // Handle category selection from sideNav component
   const handleCategory = (cat) => {
     setCategoryInput(cat);
   }
-
+  
+  // Handle currency selection from sideNav component
   const handleCurrency = (cur) => {
     setCurrency(cur);
   }
 
   return (
     <div className="App">
-
       <HeaderFooter/>
-
       <main>
         <SideNav
           handleCurrency = {handleCurrency}
           handleCategory = {handleCategory}
         />
-
         <ProductContainers
-          categoryInput = {categoryInput}
           currency = {currency}
+          categoryInput = {categoryInput}
         />
       </main>
-
       <HeaderFooter/>
       <CreditSocials/>
-
+      
       {/* </App> */}
     </div>
 
