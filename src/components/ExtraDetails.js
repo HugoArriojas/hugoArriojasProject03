@@ -1,4 +1,10 @@
 function ExtraDetails(props) {
+
+    const addedToCart = () => {
+        props.handleAddToCart()
+        props.handleClose()
+    }
+
     return (
         <>
             <div className="blocker" onClick={props.handleClose}></div>
@@ -19,7 +25,7 @@ function ExtraDetails(props) {
                             <p className="itemCount">({props.count} ratings)</p>
                             <div 
                                 className="addToCart expandedBubble" 
-                                onClick={props.handleAddToCart}
+                                onClick={addedToCart}
                             >
                                 <p className="itemPrice">Add To Cart</p>
                             </div>

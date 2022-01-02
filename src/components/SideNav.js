@@ -13,7 +13,7 @@ function SideNav(props) {
               <h2>Sort by:</h2>
               {/* setCategoryInput passes on the values and makes a new API call */}
               <h3>Categories:</h3>
-              <ul>
+              <ul className="categoryList">
                 <li>
                   <button className="btn-slide catButton" onClick={() => props.handleCategory("")}>All</button>
                 </li>
