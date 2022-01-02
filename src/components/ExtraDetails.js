@@ -17,6 +17,12 @@ function ExtraDetails(props) {
                             </div>
                             <p className="itemRating">{props.rating} ★</p>
                             <p className="itemCount">({props.count} ratings)</p>
+                            <div 
+                                className="addToCart expandedBubble" 
+                                onClick={props.handleAddToCart}
+                            >
+                                <p className="itemPrice">Add To Cart</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,9 +1,11 @@
 import './App.css';
-import { useState} from 'react';
+import { useState } from 'react';
 import SideNav from './components/SideNav';
 import HeaderFooter from './components/HeaderFooter';
 import ProductContainers from './components/ProductContainers';
 import CreditSocials from './components/CreditSocials';
+import ShopCart from './components/ShopCart';
+
 
 function App() {
   // Holding selected category
@@ -15,7 +17,7 @@ function App() {
   const handleCategory = (cat) => {
     setCategoryInput(cat);
   }
-  
+
   // Handle currency selection from sideNav component
   const handleCurrency = (cur) => {
     setCurrency(cur);
@@ -23,20 +25,25 @@ function App() {
 
   return (
     <div className="App">
-      <HeaderFooter/>
+      <HeaderFooter />
+
+      <ShopCart/>
+
       <main>
         <SideNav
-          handleCurrency = {handleCurrency}
-          handleCategory = {handleCategory}
+          handleCurrency={handleCurrency}
+          handleCategory={handleCategory}
         />
         <ProductContainers
-          currency = {currency}
-          categoryInput = {categoryInput}
+          currency={currency}
+          categoryInput={categoryInput}
+          // handleAddToCart={handleAddToCart}
+          // handleItemSelection={handleItemSelection}
         />
       </main>
-      <HeaderFooter/>
-      <CreditSocials/>
-      
+      <HeaderFooter />
+      <CreditSocials />
+
       {/* </App> */}
     </div>
 

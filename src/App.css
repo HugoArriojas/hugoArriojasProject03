@@ -326,9 +326,16 @@ main {
   }
 }
 
+.shopCart {
+  background-color: #2A9D8F;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+}
 
 /* Side Nav */
-
 .sideNav, button {
   color: #E9C46A;
   background-color: #264653;
@@ -569,6 +576,20 @@ li {
 .expandedBubble {
   padding: 5%;
   margin-bottom: 10%;
+}
+
+.addToCart {
+  margin-top: 20%;
+  padding: 10%;
+  cursor: pointer;
+  border: 2px solid #264653;
+}
+
+.addToCart:hover,
+.addToCart:focus{
+  color: #264653;
+  background-color: #EE7766;
+  border: 2px solid #264653;
 }
 
 .expandedImgInfo {
