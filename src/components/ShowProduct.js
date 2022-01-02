@@ -50,8 +50,8 @@ function ShowProduct(props) {
         // iterating through data to get each item name
         for (let key in data) {
           // push each item to an array 
-        //   newState.push({key: key, name: data[key]});
           newState.push(data[key]);
+        //   newState.push({key: key, name: data[key]});
         }
         // updating component's state using the local array newState
         setItems(newState);

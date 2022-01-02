@@ -1,6 +1,6 @@
 // App.js
 import { useEffect, useState } from 'react';
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, onValue, remove } from 'firebase/database';
 import firebase from './firebase';
 
 function ShopCart() {
@@ -19,13 +19,25 @@ function ShopCart() {
             // iterating through data to get each item name
             for (let key in data) {
                 // push each item to an array 
-                newState.push(data[key]);
+                newState.push(key);
+                newState.push({key: key, name: data[key]});
             }
-
             // updating component's state using the local array newState
             setItems(newState);
         })
     }, [])
+
+    // this function takes an argument, which is the ID of the item we want to remove
+    const handleRemoveItem = (itemId) => {
+        // here we create a reference to the database 
+        // this time though, instead of pointing at the whole database, we make our dbRef point to the specific node of the item we want to remove
+        const database = getDatabase(firebase);
+        const dbRef = ref(database, `/${itemId}`);
+        console.log(itemId)
+        
+        // using the Firebase method remove(), we remove the node specific to the item ID
+        remove(dbRef)
+    }
 
     return (
         <div className='shopCart'>
@@ -33,7 +45,8 @@ function ShopCart() {
                 {items.map((item) => {
                     return (
                         <li key={item.key}>
-                            <p>{item}</p>
+                            <p>{item.name} - {item.key}</p>
+                            <button onClick={() => handleRemoveItem(item.key)}> Remove </button>
                         </li>
                     )
                 })}
