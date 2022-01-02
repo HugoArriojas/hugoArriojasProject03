@@ -1,3 +1,5 @@
+// Old hoverText component to show text
+
 import { useState } from "react";
 
 

@@ -15,19 +15,19 @@ function SideNav(props) {
               <h3>Categories:</h3>
               <ul>
                 <li>
-                  <button className="btn-slide" onClick={() => props.handleCategory("")}>All</button>
+                  <button className="btn-slide catButton" onClick={() => props.handleCategory("")}>All</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => props.handleCategory("category/electronics")}>Electronics</button>
+                  <button className="btn-slide catButton" onClick={() => props.handleCategory("category/electronics")}>Electronics</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => props.handleCategory("category/jewelery")}>Jewelry</button>
+                  <button className="btn-slide catButton" onClick={() => props.handleCategory("category/jewelery")}>Jewelry</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => props.handleCategory("category/men's%20clothing")}>Men's clothing</button>
+                  <button className="btn-slide catButton" onClick={() => props.handleCategory("category/men's%20clothing")}>Men's clothing</button>
                 </li>
                 <li>
-                  <button className="btn-slide" onClick={() => props.handleCategory("category/women's%20clothing")}>Women's clothing</button>
+                  <button className="btn-slide catButton" onClick={() => props.handleCategory("category/women's%20clothing")}>Women's clothing</button>
                 </li>
               </ul>
 
@@ -51,7 +51,7 @@ function SideNav(props) {
                 </li>
               </ul>
             </nav>
-            <h3 className="descriptionExplain">Hover over products for desciptions</h3>
+            <h3 className="descriptionExplain">Click on products for desciptions</h3>
           </div> {/* end of sidenav Wrapper */}
         </section>
   );
