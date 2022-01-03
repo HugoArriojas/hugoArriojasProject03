@@ -1,9 +1,9 @@
 // Component to render the items on the page
 import ExtraDetails from "./ExtraDetails";
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 
 import firebase from './firebase';
-import { getDatabase, ref, onValue, push} from 'firebase/database';
+import { getDatabase, ref, push} from 'firebase/database';
 
 function ShowProduct(props) {
 
@@ -21,7 +21,7 @@ function ShowProduct(props) {
     // Toggles the descOpen from true to false or vice versa every time the button is clicked
     const toggleShowDesc = (item) => {
         setDescOpen(!descOpen);
-        if (descOpen == false) {
+        if (descOpen === false) {
             setItemImg(item.currentTarget.firstChild.firstChild.currentSrc)
             setItemTitle(item.currentTarget.firstChild.firstChild.attributes.alt.value)
             setItemPrice(item.currentTarget.childNodes[1].childNodes[1].childNodes[0].childNodes[0].firstChild.data)
