@@ -37,17 +37,20 @@ function SideNav(props) {
                 <li>
                   <img src={usdFlag} alt="Flag of the USA"
                   aria-label="change currency to USD"
-                    onClick={() => props.handleCurrency("usd")} />
+                  onClick={() => props.handleCurrency("usd")} 
+                  tabIndex={0}/>
                 </li>
                 <li>
                   <img src={cadFlag} alt="Flag of Canada"
                   aria-label="change currency to CAD"
-                    onClick={() => props.handleCurrency("cad")} />
+                  onClick={() => props.handleCurrency("cad")} 
+                  tabIndex={0}/>
                 </li>
                 <li>
                   <img src={gbpFlag} alt="Flag of Great Britain"
                   aria-label="change currency to GBP"
-                    onClick={() => props.handleCurrency("gbp")} />
+                  onClick={() => props.handleCurrency("gbp")} 
+                  tabIndex={0}/>
                 </li>
               </ul>
             </nav>

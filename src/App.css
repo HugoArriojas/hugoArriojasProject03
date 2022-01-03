@@ -277,7 +277,6 @@ p {
   height: 0;
   border-left: 200px solid transparent;
   border-bottom: 200px solid #F4A261;
-
 }
 
 /* Main section */
@@ -328,14 +327,29 @@ main {
 
 /* Shopping cart section  */
 
-.cart {
-  background-color: #2A9D8F;
-  width: 50px;
-  height: 50px;
+.closedCart {
   position: fixed;
-  top: 10%;
-  right: 5%;
+  top: 0%;
+  right: 0%;
   z-index: 4;
+  color: #264653;
+}
+
+.cartTriangle {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-top: 100px solid #F4A261;
+  
+}
+
+
+.closedCart i {
+  position:fixed;
+  right: 10px;
+  top: 10px;
+  font-size: 30px;
+  z-index: 10;
 }
 
 .yourCart {
@@ -344,10 +358,12 @@ main {
 
 .emptyCart {
   text-align: center;
+  padding: 0;
+  margin: 0 0 10% 0;
 }
 
 .cartList {
-  padding: 5%;
+  padding: 0 5% 5% 5%;
 }
 
 .cartItem {
@@ -586,7 +602,7 @@ li {
   position: fixed;
   z-index: 4;
   left: 15%;
-  bottom: 10%;
+  bottom: 5%;
   width: 80vw;
   background-color: #FFDF90;
   border: 3px solid #264653;

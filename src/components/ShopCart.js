@@ -76,8 +76,9 @@ function ShopCart() {
                     </div>
                 </>
                 :
-                <div className="cart" onClick={handleCart}>
+                <div className="closedCart" onClick={handleCart}>
                     <i className="fas fa-shopping-cart cart"></i>
+                    <div className="cartTriangle"></div>
                 </div>
             }
         </>

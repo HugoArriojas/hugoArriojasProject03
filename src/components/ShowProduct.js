@@ -49,6 +49,7 @@ function ShowProduct(props) {
             <div className="itemContainer"
                 key={props.key}
                 onClick={toggleShowDesc}
+                tabIndex={0}
             >
                 <div className="itemImage">
                     <img src={props.image} alt={props.title} />
