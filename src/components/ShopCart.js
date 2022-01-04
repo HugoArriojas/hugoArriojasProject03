@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
-import firebase from "./Firebase";
+import firebase from "./firebase";
 import "../stylesheets/ShopCart.css"
 
 function ShopCart() {

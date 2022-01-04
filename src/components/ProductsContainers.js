@@ -1,7 +1,7 @@
 // Component to render the items on the page
 import ExtraDetails from "./ExtraDetails";
 import { useState} from 'react';
-import firebase from './Firebase';
+import firebase from './firebase';
 import { getDatabase, ref, push} from 'firebase/database';
 
 function ProductContainers(props) {
