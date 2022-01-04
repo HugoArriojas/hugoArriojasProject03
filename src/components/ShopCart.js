@@ -54,24 +54,24 @@ function ShopCart() {
                         <h2 className="yourCart">Here is your cart:</h2>
                         <button className="closeButton" onClick={handleCart} aria-label="closePopupWindow">X</button>
                         <ul className="cartList">
-                            {items.length === 0 
-                            ? <h2 className="yourCart emptyCart"> Your cart is empty!</h2>
-                            : items.map((item) => {
-                                return (
-                                    <li key={item.key} className="cartItem">
-                                        <div className="cartImage">
-                                            <img src={item.name.image} alt={item.name.title} />
-                                        </div>
-                                        <div className="cartInfo">
-                                            <p className="cartTitle">{item.name.title}</p>
-                                            <p className="cartPrice">{item.name.price}</p>
-                                        </div>
-                                        <div className="remove">
+                            {items.length === 0
+                                ? <h2 className="yourCart emptyCart"> Your cart is empty!</h2>
+                                : items.map((item) => {
+                                    return (
+                                        <li key={item.key} className="cartItem">
+                                            <div className="cartImage">
+                                                <img src={item.name.image} alt={item.name.title} />
+                                            </div>
+                                            <div className="cartInfo">
+                                                <p className="cartTitle">{item.name.title}</p>
+                                                <div className="cartBubble">
+                                                    <p className="cartPrice">{item.name.price}</p>
+                                                </div>
+                                            </div>
                                             <button className="cartRemove" onClick={() => handleRemoveItem(item.key)}> Remove </button>
-                                        </div>
-                                    </li>
-                                )
-                            })}
+                                        </li>
+                                    )
+                                })}
                         </ul>
                     </div>
                 </>
