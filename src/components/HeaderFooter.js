@@ -1,3 +1,5 @@
+import "../stylesheets/HeaderFooter.css"
+
 const HeaderFooter = (props) => {
     return (
     <div className="header footer">

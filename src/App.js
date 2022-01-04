@@ -1,8 +1,8 @@
-import './App.css';
+import './stylesheets/App.css';
 import { useState } from 'react';
 import SideNav from './components/SideNav';
 import HeaderFooter from './components/HeaderFooter';
-import ProductContainers from './components/ProductContainers';
+import ProductContainers from './components/ProductsSection';
 import CreditSocials from './components/CreditSocials';
 import ShopCart from './components/ShopCart';
 

@@ -1,11 +1,10 @@
 // Component to render the items on the page
 import ExtraDetails from "./ExtraDetails";
 import { useState} from 'react';
-
-import firebase from './firebase';
+import firebase from './Firebase';
 import { getDatabase, ref, push} from 'firebase/database';
 
-function ShowProduct(props) {
+function ProductContainers(props) {
 
     // Holds the description open state
     const [descOpen, setDescOpen] = useState(false);
@@ -85,7 +84,7 @@ function ShowProduct(props) {
     )
 }
 
-export default ShowProduct;
+export default ProductContainers;
 
 
 

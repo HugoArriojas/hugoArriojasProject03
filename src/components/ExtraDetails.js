@@ -1,3 +1,5 @@
+import "../stylesheets/ExtraDetails.css"
+
 function ExtraDetails(props) {
 
     const addedToCart = () => {

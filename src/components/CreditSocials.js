@@ -1,4 +1,5 @@
 import initials from "../assets/initials.png"
+import "../stylesheets/CreditSocials.css"
 
 function CreditSocials() {
 

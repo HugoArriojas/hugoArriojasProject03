@@ -1,7 +1,8 @@
-// App.js
+
 import { useEffect, useState } from "react";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
-import firebase from "./firebase";
+import firebase from "./Firebase";
+import "../stylesheets/ShopCart.css"
 
 function ShopCart() {
     // Holds the description open state

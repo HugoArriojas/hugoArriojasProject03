@@ -2,6 +2,7 @@
 import usdFlag from "../assets/USD-flag.png"
 import cadFlag from "../assets/CAD-flag.png"
 import gbpFlag from "../assets/GBP-flag.png"
+import "../stylesheets/SideNav.css"
 
 
 function SideNav(props) {

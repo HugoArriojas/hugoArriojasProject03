@@ -1,6 +1,7 @@
-import ShowProduct from "./ShowProduct";
+import ShowProduct from "./ProductsContainers";
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import "../stylesheets/ProductsSection.css"
 
 const ProductContainers = (props) => {
   // using useState in order to hold the items from the Fake store API

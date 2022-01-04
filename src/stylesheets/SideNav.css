@@ -1,0 +1,101 @@
+/* Side Nav */
+.sideNav, button {
+    color: #E9C46A;
+    background-color: #264653;
+  }
+  
+  .sideNav {
+    text-align: center;
+    width: 15%;
+    min-width: 90px;
+  }
+  
+  .navWrapper {
+    position: sticky;
+    position: -webkit-sticky; /* Safari */
+    top:0;
+  }
+  
+  
+  .categoryList {
+    width: 100%;
+    border-bottom: #EE7766 2px solid;
+    border-top: #EE7766 2px solid;
+    padding: 0;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  
+  .catButton {
+    cursor: pointer;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: #EE7766 2px solid;
+    border-top: #EE7766 2px solid;
+    padding: 10% 4%;
+  }
+  
+    /* Class for CSS "fill" effect  */
+  .btn-slide {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* The "fill" that hapens on focus and hover is a pseudoclass that transforms to the right, going from the scaleX of 0 to 1*/
+  .btn-slide::before {
+    content: "";
+    background-color:#2A9D8F;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index:-5;
+    transform: scaleX(0);
+    transition: transform 300ms ease-in-out;
+    transform-origin: left;
+  }
+  
+  .btn-slide:hover::before, 
+  .btn-slide:focus::before {
+    transform: scaleX(1)
+  }
+  
+  /* Currency converter */
+  .currencies {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-top: none;
+    border-bottom: none;
+    padding: 0;
+    margin-top: 0;
+  }
+  
+  .currencies li {
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .currencies img {
+    height: 100%;
+    width: 80%;
+    max-width: 90px;
+    border: transparent 2px solid;
+    margin-top: 3px;
+  }
+  
+  .currencies img:hover, .currencies img:focus {
+    border: #EE7766 2px solid;
+  }
+
+  @media screen and (max-height: 590px)  {
+    /* Error handling: if screen is too small vertically, can still scroll through categories, loses sticky property */
+    .sideNav {
+      overflow: scroll;
+    }
+  }
+  
