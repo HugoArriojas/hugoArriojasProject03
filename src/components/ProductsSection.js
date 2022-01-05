@@ -1,4 +1,4 @@
-import ShowProduct from "./ProductsContainers";
+import ProductsContainers from "./ProductsContainers";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 import "../stylesheets/ProductsSection.css"
@@ -42,7 +42,7 @@ const ProductContainers = (props) => {
             }
 
             return (
-              <ShowProduct
+              <ProductsContainers
                 key={product.id} // passing through as key
                 image={product.image}
                 title={product.title}
