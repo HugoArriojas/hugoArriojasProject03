@@ -22,6 +22,12 @@
     justify-content: space-between;
     border: #264653 2px solid;
     margin: 1%;
+    cursor: pointer;
+  }
+
+  .itemContainer:focus,
+  .itemContainer:hover {
+    border: #F4A261 3px solid;
   }
   
   .itemImage {
