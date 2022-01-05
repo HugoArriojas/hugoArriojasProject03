@@ -47,8 +47,10 @@ function ProductContainers(props) {
         <>
             <div className="itemContainer"
                 key={props.key}
-                onClick={toggleShowDesc}
                 tabIndex={0}
+                onClick={toggleShowDesc}
+                // Making it so that the product containers can be selected using the enter key
+                onKeyUp={(e) => {if (e.key === 'Enter') toggleShowDesc(e)}}
             >
                 <div className="itemImage">
                     <img src={props.image} alt={props.title} />

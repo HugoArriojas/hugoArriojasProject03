@@ -84,12 +84,13 @@
     height: 100%;
     width: 80%;
     max-width: 90px;
-    border: transparent 2px solid;
+    border: transparent 4px solid;
     margin-top: 3px;
   }
   
-  .currencies img:hover, .currencies img:focus {
-    border: #EE7766 2px solid;
+  .currencies img:hover, 
+  .currencies img:focus {
+    border: #EE7766 4px solid;
   }
 
   @media screen and (max-height: 590px)  {
