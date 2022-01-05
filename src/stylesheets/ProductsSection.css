@@ -27,7 +27,7 @@
 
   .itemContainer:focus,
   .itemContainer:hover {
-    border: #F4A261 3px solid;
+    border: #F4A261 6px solid;
   }
   
   .itemImage {

@@ -12,9 +12,14 @@
     width: 0;
     height: 0;
     border-left: 100px solid transparent;
-    border-top: 100px solid #F4A261;
-    
+    border-top: 100px solid #F4A261; 
   }
+  
+  .cartTriangle:hover,
+  .cartTriangle:focus {
+    border-top: 100px solid #EE7766; 
+  }
+  
   
   .closedCart i {
     position:fixed;
