@@ -17,7 +17,8 @@
     color: #264653;
     text-decoration: none;
   }
-  a:hover {
+  a:hover ,
+  a:focus {
     color: #EE7766;
   }
   

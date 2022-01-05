@@ -77,9 +77,15 @@ function ShopCart() {
                     </div>
                 </>
                 :
-                <div className="closedCart" onClick={handleCart}>
+                <div className="closedCart" 
+                    onClick={handleCart} 
+                    >
                     <i className="fas fa-shopping-cart cart"></i>
-                    <div className="cartTriangle"></div>
+                    <div 
+                        className="cartTriangle"
+                        tabIndex={0}
+                        onKeyUp={(e) => {if (e.key === 'Enter') handleCart(e)}}
+                    ></div>
                 </div>
             }
         </>
