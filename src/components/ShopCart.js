@@ -7,12 +7,21 @@ import "../stylesheets/ShopCart.css"
 function ShopCart() {
     // Holds the description open state
     const [cartOpen, setCartOpen] = useState(false);
+    // Holds the items in the cart
+    const [items, setItems] = useState([]);
+    // holds the number of items in the cart
+    const [cartNumber, setCartNumber] = useState(0);
 
+    useEffect(() => {
+        setCartNumber(items.length);
+    })
+
+    // Opens and closes the cart based on click
     const handleCart = () => {
         setCartOpen(!cartOpen);
     }
 
-    const [items, setItems] = useState([]);
+
     useEffect(() => {
         // var holds database details
         const database = getDatabase(firebase)
@@ -46,6 +55,7 @@ function ShopCart() {
         remove(dbRef)
     }
 
+
     return (
         <>
             {cartOpen ?
@@ -77,14 +87,17 @@ function ShopCart() {
                     </div>
                 </>
                 :
-                <div className="closedCart" 
-                    onClick={handleCart} 
-                    >
+                <div className="closedCart"
+                    onClick={handleCart}
+                >
                     <i className="fas fa-shopping-cart cart"></i>
-                    <div 
+                    <div className="cartNumberBubble">
+                        <p className="cartNumber">{cartNumber}</p>
+                    </div>
+                    <div
                         className="cartTriangle"
                         tabIndex={0}
-                        onKeyUp={(e) => {if (e.key === 'Enter') handleCart(e)}}
+                        onKeyUp={(e) => { if (e.key === 'Enter') handleCart(e) }}
                     ></div>
                 </div>
             }
