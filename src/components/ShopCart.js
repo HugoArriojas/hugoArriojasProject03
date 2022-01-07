@@ -91,9 +91,12 @@ function ShopCart() {
                     onClick={handleCart}
                 >
                     <i className="fas fa-shopping-cart cart"></i>
-                    <div className="cartNumberBubble">
+                    {items.length > 0 
+                    ? <div className="cartNumberBubble">
                         <p className="cartNumber">{cartNumber}</p>
                     </div>
+                    : null
+                    }
                     <div
                         className="cartTriangle"
                         tabIndex={0}
