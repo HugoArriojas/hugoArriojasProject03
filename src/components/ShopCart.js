@@ -106,6 +106,7 @@ function ShopCart() {
             }
         </>
     )
+    
 }
 
 export default ShopCart
