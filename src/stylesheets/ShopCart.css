@@ -19,6 +19,20 @@
   .cartTriangle:focus {
     border-top: 100px solid #EE7766; 
   }
+
+  .cartNumberBubble {
+    position: fixed;
+    z-index: 10;
+    top: 0%;
+    right: 6%;
+    background-color: #E9C46A;
+    border-radius: 50%;
+  }
+
+  .cartNumber {
+    font-weight: bold;
+    padding: 5px 10px;
+  }
   
   
   .closedCart i {
