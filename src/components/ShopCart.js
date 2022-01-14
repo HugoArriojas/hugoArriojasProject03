@@ -4,17 +4,19 @@ import { getDatabase, ref, onValue, remove } from "firebase/database";
 import firebase from "./firebase";
 import "../stylesheets/ShopCart.css"
 
-function ShopCart() {
+function ShopCart(props) {
     // Holds the description open state
     const [cartOpen, setCartOpen] = useState(false);
     // Holds the items in the cart
     const [items, setItems] = useState([]);
     // holds the number of items in the cart
     const [cartNumber, setCartNumber] = useState(0);
+    
 
     useEffect(() => {
         setCartNumber(items.length);
-    })
+    }, [items])
+
 
     // Opens and closes the cart based on click
     const handleCart = () => {
@@ -64,9 +66,11 @@ function ShopCart() {
                     <div className="shopCart">
                         <h2 className="yourCart">Here is your cart:</h2>
                         <button className="closeButton" onClick={handleCart} aria-label="closePopupWindow">X</button>
+                        <p className="cartTotal">Cart Total: $ {props.cartTotal}</p>
                         <ul className="cartList">
                             {items.length === 0
-                                ? <h2 className="yourCart emptyCart"> Your cart is empty!</h2>
+                                ? <h2 className="yourCart emptyCart"> Your cart is currently empty!</h2>
+                                
                                 : items.map((item) => {
                                     return (
                                         <li key={item.key} className="cartItem">
