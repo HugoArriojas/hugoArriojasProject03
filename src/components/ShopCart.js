@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
 import firebase from "./firebase";
 import "../stylesheets/ShopCart.css"
+import CartDetails from "./CartDetails";
 
 function ShopCart(props) {
     // Holds the description open state
@@ -11,8 +12,17 @@ function ShopCart(props) {
     const [items, setItems] = useState([]);
     // holds the number of items in the cart
     const [cartNumber, setCartNumber] = useState(0);
-    
+    // Holds the "extra details" state for the cart
+    const [cartDetailsOpen, setCartDetailsOpen] = useState(false);
+    // Holds the state for the selected cart item that you want the extra details on
+    const [cartImage, setCartImage] = useState("");
+    const [cartTitle, setCartTitle] = useState("");
+    const [cartRating, setCartRating] = useState("");
+    const [cartPrice, setCartPrice] = useState("");
+    const [cartDesc, setCartDesc] = useState("");
 
+
+    // useEffect so that each time an item is added to the cart, the "cart bubble" is updated
     useEffect(() => {
         setCartNumber(items.length);
     }, [items])
@@ -23,7 +33,12 @@ function ShopCart(props) {
         setCartOpen(!cartOpen);
     }
 
+    // Closes the cart
+    const toggleCartClose = () => {
+        setCartDetailsOpen(!cartDetailsOpen);
+    }
 
+    // Pulling the data of cart items from Firebase
     useEffect(() => {
         // var holds database details
         const database = getDatabase(firebase)
@@ -45,13 +60,23 @@ function ShopCart(props) {
         })
     }, [])
 
+    // Shows extra details for items stored in the favourites list
+    const detailButton = (e) => {
+        setCartImage(e.currentTarget.parentElement.parentElement.children[0].firstChild.src)
+        setCartTitle(e.currentTarget.parentElement.children[0].innerText)
+        setCartRating(e.currentTarget.parentElement.children[2].innerText)
+        setCartPrice(e.currentTarget.parentElement.children[1].innerText)
+        setCartDesc(e.currentTarget.parentElement.children[3].innerText)
+        setCartDetailsOpen(!cartDetailsOpen);
+    }
+
+
     // this function takes an argument, which is the ID of the item we want to remove
     const handleRemoveItem = (itemId) => {
         // here we create a reference to the database 
         // this time though, instead of pointing at the whole database, we make our dbRef point to the specific node of the item we want to remove
         const database = getDatabase(firebase);
         const dbRef = ref(database, `/${itemId}`);
-        console.log(itemId)
 
         // using the Firebase method remove(), we remove the node specific to the item ID
         remove(dbRef)
@@ -62,55 +87,96 @@ function ShopCart(props) {
         <>
             {cartOpen ?
                 <>
+                    {/* Blocker in case users don't want to x out of the window */}
                     <div className="blocker" onClick={handleCart}></div>
                     <div className="shopCart">
                         <h2 className="yourCart">Here is your cart:</h2>
-                        <button className="closeButton" onClick={handleCart} aria-label="closePopupWindow">X</button>
+                        {/* hides absolutely positioned close button when favourites details are open */}
+                        {!cartDetailsOpen ?
+                            <button className="closeButton" onClick={handleCart} aria-label="closePopupWindow">X</button>
+                            : null
+                        }
                         <p className="cartTotal">Cart Total: $ {props.cartTotal}</p>
                         <ul className="cartList">
                             {items.length === 0
                                 ? <h2 className="yourCart emptyCart"> Your cart is currently empty!</h2>
-                                
+
                                 : items.map((item) => {
                                     return (
-                                        <li key={item.key} className="cartItem">
-                                            <div className="cartImage">
-                                                <img src={item.name.image} alt={item.name.title} />
-                                            </div>
-                                            <div className="cartInfo">
-                                                <p className="cartTitle">{item.name.title}</p>
-                                                <div className="cartBubble">
-                                                    <p className="cartPrice">{item.name.price}</p>
+                                        <>
+                                            <li key={item.key} className="cartItem">
+                                                <div className="cartImage">
+                                                    <img src={item.name.image} alt={item.name.title} />
                                                 </div>
-                                            </div>
-                                            <button className="cartRemove" onClick={() => handleRemoveItem(item.key)}> Remove </button>
-                                        </li>
+                                                <div className="cartInfo">
+                                                    <p className="cartTitle">{item.name.title}</p>
+                                                    <div className="cartBubble">
+                                                        <p className="cartPrice">{item.name.price}</p>
+                                                    </div>
+                                                    <p className="descNull">{item.name.rating}</p>
+                                                    <p className="descNull">{item.name.desc}</p>
+                                                    <button className="favDetails"
+                                                        onClick={detailButton}
+                                                        // Making the containers tabbable for accessibility
+                                                        tabIndex={0}
+                                                        // Making it so that the results containers can be selected using the enter key
+                                                        onKeyUp={(e) => { if (e.key === 'Enter') detailButton(e) }}>
+                                                        More Details
+                                                    </button>
+                                                    <button
+                                                        className="cartRemove remove1"
+                                                        onClick={() => handleRemoveItem(item.key)}> Remove
+                                                    </button>
+                                                </div>{/* /favouritesInfo */}
+
+                                                {/* Secondary remove button that's displayed depending on screen size */}
+                                                <button
+                                                    className="cartRemove remove2"
+                                                    onClick={() => handleRemoveItem(item.key)}> Remove
+                                                </button>
+                                            </li> {/* /favouritesItem */}
+
+                                            {/* if descOpen is true, show the expanded info */}
+                                            {cartDetailsOpen ?
+                                                <CartDetails
+                                                    image={cartImage}
+                                                    title={cartTitle}
+                                                    desc={cartDesc}
+                                                    price={cartPrice}
+                                                    rating={cartRating}
+                                                    handleClose={toggleCartClose}
+                                                />
+                                                : null
+                                            }
+
+                                        </>
                                     )
                                 })}
-                        </ul>
-                    </div>
+                        </ul> {/* /cartList */}
+                    </div> {/* /shopCart  */}
                 </>
                 :
                 <div className="closedCart"
                     onClick={handleCart}
                 >
                     <i className="fas fa-shopping-cart cart"></i>
-                    {items.length > 0 
-                    ? <div className="cartNumberBubble">
-                        <p className="cartNumber">{cartNumber}</p>
-                    </div>
-                    : null
+                    {items.length > 0
+                        ? <div className="cartNumberBubble">
+                            <p className="cartNumber">{cartNumber}</p>
+                        </div>
+                        : null
                     }
+                    {/* Cart triangle that is on the top right of the screen*/}
                     <div
                         className="cartTriangle"
                         tabIndex={0}
                         onKeyUp={(e) => { if (e.key === 'Enter') handleCart(e) }}
                     ></div>
-                </div>
+                </div> // </closedCart>
             }
         </>
     )
-    
+
 }
 
 export default ShopCart

@@ -1,10 +1,10 @@
 import './stylesheets/App.css';
 import { useState } from 'react';
+import ShopCart from './components/ShopCart';
 import SideNav from './components/SideNav';
 import HeaderFooter from './components/HeaderFooter';
-import ProductContainers from './components/ProductsSection';
+import ProductSection from './components/ProductSection';
 import CreditSocials from './components/CreditSocials';
-import ShopCart from './components/ShopCart';
 
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
   const [categoryInput, setCategoryInput] = useState("");
   // Holding current currency conversion
   const [currency, setCurrency] = useState("usd")
+  //  Holding the loading state in case there is also a category change
 
   // Handle category selection from sideNav component
   const handleCategory = (cat) => {
@@ -23,10 +24,10 @@ function App() {
     setCurrency(cur);
   }
 
+
   return (
     <div className="App">
       <HeaderFooter />
-
       <ShopCart/>
 
       <main>
@@ -34,11 +35,9 @@ function App() {
           handleCurrency={handleCurrency}
           handleCategory={handleCategory}
         />
-        <ProductContainers
+        <ProductSection
           currency={currency}
           categoryInput={categoryInput}
-          // handleAddToCart={handleAddToCart}
-          // handleItemSelection={handleItemSelection}
         />
       </main>
       <HeaderFooter />

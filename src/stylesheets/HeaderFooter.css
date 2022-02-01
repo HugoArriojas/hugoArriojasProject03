@@ -1,13 +1,35 @@
 /* Header and footer styling */
 .header, 
 .footer {
+  background-color: #252422;
   width: 100%;
-  background-color: #264653;
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* Stops horizontal scroll from triangle shape */
   overflow: hidden; 
+}
+
+.titleText {
+  margin-left: 5%;
+}
+
+h1,
+.subtitle {
+  color: #FFFCF2;
+  margin: 2% 0;
+}
+
+.title {
+  display: flex;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h1 span {
+  color: #EB5E28;
 }
 
 .imageTriangle {
@@ -24,9 +46,9 @@ main {
 
 .loading {
   text-align: center;
+  color: #252422;
   width: 100%;
   height: 20%;
-  color: #264653;
 }
 
 .loadRipple {
@@ -36,10 +58,10 @@ main {
   margin: 0 auto;
 }
 .loadRipple div {
-  opacity: 1;
   position: absolute;
-  border: 4px solid #264653;
+  border: 4px solid #252422;
   border-radius: 50%;
+  opacity: 1;
   animation: loadRipple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 .loadRipple div:nth-child(2) {
@@ -47,17 +69,28 @@ main {
 }
 @keyframes loadRipple {
   0% {
-    top: 36px;
-    left: 36px;
     width: 0;
     height: 0;
+    top: 36px;
+    left: 36px;
     opacity: 1;
   }
   100% {
-    top: 0px;
-    left: 0px;
     width: 72px;
     height: 72px;
+    top: 0px;
+    left: 0px;
     opacity: 0;
+  }
+}
+
+
+@media screen and (max-width: 480px)  {
+  .title {
+    flex-direction: column;
+  }
+  
+  h1 {
+    margin: 0;
   }
 }

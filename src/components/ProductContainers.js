@@ -3,6 +3,7 @@ import ExtraDetails from "./ExtraDetails";
 import { useState} from 'react';
 import firebase from './firebase';
 import { getDatabase, ref, push} from 'firebase/database';
+import "../stylesheets/ProductContainers.css"
 
 function ProductContainers(props) {
 
@@ -15,6 +16,8 @@ function ProductContainers(props) {
     const [itemTitle, setItemTitle] = useState("")  
     // holds the selected item price
     const [itemPrice, setItemPrice] = useState("")  
+    const [itemRating, setItemRating] = useState("")  
+    const [itemDesc, setItemDesc] = useState("")  
 
 
     // Toggles the descOpen from true to false or vice versa every time the button is clicked
@@ -24,6 +27,8 @@ function ProductContainers(props) {
             setItemImg(item.currentTarget.firstChild.firstChild.currentSrc)
             setItemTitle(item.currentTarget.firstChild.firstChild.attributes.alt.value)
             setItemPrice(item.currentTarget.childNodes[1].childNodes[1].childNodes[0].childNodes[0].firstChild.data)
+            setItemRating(item.currentTarget.childNodes[1].childNodes[1].childNodes[1].innerText)
+            setItemDesc(item.currentTarget.childNodes[1].childNodes[1].childNodes[3].innerText)
         }
     }
     
@@ -36,7 +41,9 @@ function ProductContainers(props) {
         let cartItem = {
             title: itemTitle,
             image: itemImg,
-            price: itemPrice
+            price: itemPrice,
+            rating: itemRating,
+            desc: itemDesc
         }
         // push the value of the `selected item` state to the database
         push(dbRef, cartItem);
@@ -63,6 +70,7 @@ function ProductContainers(props) {
                         </div>
                         <p className="itemRating">{props.rating} ★</p>
                         <p className="itemCount">({props.count} ratings)</p>
+                        <p className="descNull">{props.description}</p>
                     </div>
                 </div>
             </div>
