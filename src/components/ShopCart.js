@@ -60,7 +60,7 @@ function ShopCart(props) {
         })
     }, [])
 
-    // Shows extra details for items stored in the favourites list
+    // Shows extra details for items stored in the cart
     const detailButton = (e) => {
         setCartImage(e.currentTarget.parentElement.parentElement.children[0].firstChild.src)
         setCartTitle(e.currentTarget.parentElement.children[0].innerText)
@@ -91,12 +91,11 @@ function ShopCart(props) {
                     <div className="blocker" onClick={handleCart}></div>
                     <div className="shopCart">
                         <h2 className="yourCart">Here is your cart:</h2>
-                        {/* hides absolutely positioned close button when favourites details are open */}
+                        {/* hides absolutely positioned close button when cart details are open */}
                         {!cartDetailsOpen ?
                             <button className="closeButton" onClick={handleCart} aria-label="closePopupWindow">X</button>
                             : null
                         }
-                        <p className="cartTotal">Cart Total: $ {props.cartTotal}</p>
                         <ul className="cartList">
                             {items.length === 0
                                 ? <h2 className="yourCart emptyCart"> Your cart is currently empty!</h2>
@@ -115,7 +114,7 @@ function ShopCart(props) {
                                                     </div>
                                                     <p className="descNull">{item.name.rating}</p>
                                                     <p className="descNull">{item.name.desc}</p>
-                                                    <button className="favDetails"
+                                                    <button className="cartDetails"
                                                         onClick={detailButton}
                                                         // Making the containers tabbable for accessibility
                                                         tabIndex={0}
@@ -127,14 +126,14 @@ function ShopCart(props) {
                                                         className="cartRemove remove1"
                                                         onClick={() => handleRemoveItem(item.key)}> Remove
                                                     </button>
-                                                </div>{/* /favouritesInfo */}
+                                                </div>{/* /cartInfo */}
 
                                                 {/* Secondary remove button that's displayed depending on screen size */}
                                                 <button
                                                     className="cartRemove remove2"
                                                     onClick={() => handleRemoveItem(item.key)}> Remove
                                                 </button>
-                                            </li> {/* /favouritesItem */}
+                                            </li> {/* /cartItem */}
 
                                             {/* if descOpen is true, show the expanded info */}
                                             {cartDetailsOpen ?

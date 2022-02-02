@@ -25,9 +25,7 @@ function ExtraDetails(props) {
 
                     <div className="expandedInfo">
                         <div className="itemInfoWrapper">
-                            <div className="expandedBubble">
-                                <p className="itemPrice">{props.price}</p>
-                            </div>
+                                <p className="itemPrice priceBubble">{props.price}</p>
                             <p className="itemRating">{props.rating} ★</p>
                             <p className="itemCount">({props.count} ratings)</p>
                             <div 
