@@ -82,13 +82,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 3%;
+    padding: 5%;
     margin: 0 auto;
+}
+
+.expandedSide {
+    margin-top: 50px;
 }
 
 .expandedBubble {
     padding: 5%;
-    margin-bottom: 10%;
+    margin: 10%;
 }
 
 
