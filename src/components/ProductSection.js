@@ -1,11 +1,7 @@
-<<<<<<< HEAD:src/components/ProductsSection.js
-import ProductsContainers from "./ProductsContainers";
-=======
 // Component to render the results on the page, holds ShowProduct
-import ProductContainers from "./ProductContainers";
->>>>>>> 467fb16886449cea30ce21c88051f7b1f9100665:src/components/ProductSection.js
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import ProductContainers from "./ProductContainers";
 import "../stylesheets/ProductSection.css"
 
 const ProductSection = (props) => {
@@ -49,11 +45,8 @@ const ProductSection = (props) => {
             }
 
             return (
-<<<<<<< HEAD:src/components/ProductsSection.js
-              <ProductsContainers
-=======
+              <>
               <ProductContainers
->>>>>>> 467fb16886449cea30ce21c88051f7b1f9100665:src/components/ProductSection.js
                 key={product.id} // passing through as key
                 image={product.image}
                 title={product.title}
@@ -62,7 +55,8 @@ const ProductSection = (props) => {
                 count={product.rating.count}
                 description={product.description}
                 currency={props.currency}
-              />
+                />
+                </>
             )
           })
         )
