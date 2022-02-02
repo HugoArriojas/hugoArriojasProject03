@@ -1,9 +1,14 @@
+<<<<<<< HEAD:src/components/ProductsSection.js
 import ProductsContainers from "./ProductsContainers";
+=======
+// Component to render the results on the page, holds ShowProduct
+import ProductContainers from "./ProductContainers";
+>>>>>>> 467fb16886449cea30ce21c88051f7b1f9100665:src/components/ProductSection.js
 import { useState, useEffect } from 'react';
 import axios from "axios";
-import "../stylesheets/ProductsSection.css"
+import "../stylesheets/ProductSection.css"
 
-const ProductContainers = (props) => {
+const ProductSection = (props) => {
   // using useState in order to hold the items from the Fake store API
   const [item, setItem] = useState([])
   // Checks if API response has been received
@@ -11,6 +16,8 @@ const ProductContainers = (props) => {
 
 
   useEffect(() => {
+    // Set to false every time that an API call is made
+    setLoading(false)
     // Calling the API using Axios
     axios({
       method: "GET",
@@ -26,10 +33,10 @@ const ProductContainers = (props) => {
     // We want API call to be made with every category change
   }, [props.categoryInput])
 
-    return (
-        <section className="productContainers">
-        {/* Ternary conditional checks if the API has received a response 
-        This conditional done with the help of Esther Edell*/}
+  return (
+    <section className="products">
+      <ul className="productsList">
+        {/* Ternary conditional checks if the API has received a response */}
         {loading ? (
           item.map((product) => {
             let currentPrice = 0;
@@ -42,7 +49,11 @@ const ProductContainers = (props) => {
             }
 
             return (
+<<<<<<< HEAD:src/components/ProductsSection.js
               <ProductsContainers
+=======
+              <ProductContainers
+>>>>>>> 467fb16886449cea30ce21c88051f7b1f9100665:src/components/ProductSection.js
                 key={product.id} // passing through as key
                 image={product.image}
                 title={product.title}
@@ -66,8 +77,9 @@ const ProductContainers = (props) => {
             </div>
           )
         }
-      </section>
-    )
+      </ul>
+    </section>
+  )
 }
 
-export default ProductContainers;
+export default ProductSection;

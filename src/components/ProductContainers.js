@@ -1,8 +1,9 @@
 // Component to render the items on the page
 import ExtraDetails from "./ExtraDetails";
-import { useState} from 'react';
+import { useState } from 'react';
 import firebase from './firebase';
-import { getDatabase, ref, push} from 'firebase/database';
+import { getDatabase, ref, push } from 'firebase/database';
+import "../stylesheets/ProductContainers.css"
 
 function ProductContainers(props) {
 
@@ -12,9 +13,11 @@ function ProductContainers(props) {
     // holds the selected item image
     const [itemImg, setItemImg] = useState("")
     // holds the selected item title
-    const [itemTitle, setItemTitle] = useState("")  
+    const [itemTitle, setItemTitle] = useState("")
     // holds the selected item price
-    const [itemPrice, setItemPrice] = useState("")  
+    const [itemPrice, setItemPrice] = useState("")
+    const [itemRating, setItemRating] = useState("")
+    const [itemDesc, setItemDesc] = useState("")
 
 
     // Toggles the descOpen from true to false or vice versa every time the button is clicked
@@ -23,11 +26,13 @@ function ProductContainers(props) {
         if (descOpen === false) {
             setItemImg(item.currentTarget.firstChild.firstChild.currentSrc)
             setItemTitle(item.currentTarget.firstChild.firstChild.attributes.alt.value)
-            setItemPrice(item.currentTarget.childNodes[1].childNodes[1].childNodes[0].childNodes[0].firstChild.data)
+            setItemPrice(item.currentTarget.childNodes[1].childNodes[1].childNodes[0].firstChild.data)
+            setItemRating(item.currentTarget.childNodes[1].childNodes[1].childNodes[1].children[0].innerText)
+            setItemDesc(item.currentTarget.childNodes[1].childNodes[1].childNodes[2].innerText)
         }
     }
-    
-     // Handle Add To Cart function
+
+    // Handle Add To Cart function
     const handleAddToCart = () => {
         // create a reference to our database
         const database = getDatabase(firebase);
@@ -36,7 +41,9 @@ function ProductContainers(props) {
         let cartItem = {
             title: itemTitle,
             image: itemImg,
-            price: itemPrice
+            price: itemPrice,
+            rating: itemRating,
+            desc: itemDesc
         }
         // push the value of the `selected item` state to the database
         push(dbRef, cartItem);
@@ -50,7 +57,7 @@ function ProductContainers(props) {
                 tabIndex={0}
                 onClick={toggleShowDesc}
                 // Making it so that the product containers can be selected using the enter key
-                onKeyUp={(e) => {if (e.key === 'Enter') toggleShowDesc(e)}}
+                onKeyUp={(e) => { if (e.key === 'Enter') toggleShowDesc(e) }}
             >
                 <div className="itemImage">
                     <img src={props.image} alt={props.title} />
@@ -58,11 +65,12 @@ function ProductContainers(props) {
                 <div className="itemText">
                     <h3 className="itemTitle">{props.title}</h3>
                     <div className="itemInfo">
-                        <div className="priceBubble">
-                            <p className="itemPrice">{props.price}</p>
+                        <p className="itemPrice priceBubble">{props.price}</p>
+                        <div className="ratings">
+                            <p className="itemRating">{props.rating} ★</p>
+                            <p className="itemCount">({props.count} ratings)</p>
                         </div>
-                        <p className="itemRating">{props.rating} ★</p>
-                        <p className="itemCount">({props.count} ratings)</p>
+                        <p className="descNull">{props.description}</p>
                     </div>
                 </div>
             </div>
