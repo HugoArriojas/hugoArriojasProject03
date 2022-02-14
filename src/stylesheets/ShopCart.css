@@ -53,10 +53,6 @@
     margin: 0 0 10% 0;
   }
   
-  .cartList {
-    padding: 0 5% 5% 5%;
-  }
-  
   .cartItem {
     display: flex;
     align-items: center;
@@ -117,6 +113,20 @@
     background-color: #EE7766;
   }
   
+  .cartMoney {
+    width: 35%;
+    margin-left: auto;
+    text-align: right;
+    padding: 0 10% 5% 0;
+  }
+
+  .cartMoney span {
+    padding-left: 30%;
+  }
+
+  .cartMoney span {
+    font-weight: bold;
+  }
   
 
   

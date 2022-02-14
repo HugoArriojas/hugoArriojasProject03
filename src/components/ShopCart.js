@@ -5,7 +5,7 @@ import firebase from "./firebase";
 import "../stylesheets/ShopCart.css"
 import CartDetails from "./CartDetails";
 
-function ShopCart(props) {
+function ShopCart() {
     // Holds the description open state
     const [cartOpen, setCartOpen] = useState(false);
     // Holds the items in the cart
@@ -21,10 +21,29 @@ function ShopCart(props) {
     const [cartPrice, setCartPrice] = useState("");
     const [cartDesc, setCartDesc] = useState("");
 
+    // Hold the checkout price information for all cart items
+    const [cartTotal, setCartTotal] = useState(0);
+    const [cartSubtotal, setCartSubtotal] = useState(0);
+    const [cartTax, setCartTax] = useState(0);
+    const [cartShipping, setCartShipping] = useState(0);
+
 
     // useEffect so that each time an item is added to the cart, the "cart bubble" is updated
+        // Also calculates the cart total every time an ittem is added or removed
     useEffect(() => {
         setCartNumber(items.length);
+
+        // Takes the prices in the cart and removes all text except decimals and coverts the remaining string to a number
+        let cartPricesArray = items.map(item =>
+            Number(item.name.price.replace(/[^\d.]/g, ''))
+        );
+        // Array of cartPrices is reduced to a total with 2 decimal points
+        let cartPriceAddition = cartPricesArray.reduce((prevValue, currValue) => prevValue + currValue, 0).toFixed(2)
+        // Cart total, taxes, and shipping are set
+        setCartSubtotal(cartPriceAddition)
+        setCartTax((cartPriceAddition * 0.15).toFixed(2))
+        setCartShipping((cartPriceAddition * 0.05).toFixed(2))
+        setCartTotal((cartPriceAddition * 1.2).toFixed(2))
     }, [items])
 
 
@@ -110,7 +129,7 @@ function ShopCart(props) {
                                                 <div className="cartInfo">
                                                     <p className="cartTitle">{item.name.title}</p>
                                                     <div className="cartBubble">
-                                                        <p className="cartPrice">{item.name.price}</p>
+                                                        <p className="cartPrice" id="cartPrice">{item.name.price}</p>
                                                     </div>
                                                     <p className="descNull">{item.name.rating}</p>
                                                     <p className="descNull">{item.name.desc}</p>
@@ -152,6 +171,14 @@ function ShopCart(props) {
                                     )
                                 })}
                         </ul> {/* /cartList */}
+
+                        <div className="cartMoney">
+                            <p className="cartSubtotal">Subtotal: <span>{cartSubtotal}</span></p>
+                            <p className="cartTax">Tax: <span>{cartTax}</span></p>
+                            <p className="cartShipping">Shipping: <span>{cartShipping}</span></p>
+                            <p className="cartTotal">Cart Total: <span>{cartTotal}</span></p>
+                        </div>
+
                     </div> {/* /shopCart  */}
                 </>
                 :
