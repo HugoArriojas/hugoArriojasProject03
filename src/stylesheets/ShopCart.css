@@ -138,17 +138,21 @@
 .cartMoney {
   width: 38%;
   margin-left: auto;
-  text-align: right;
   padding: 0 10% 5% 0;
+  display: flex;
 }
 
-.cartMoney span {
-  padding-left: 30%;
+.titles,
+.amounts {
+  text-align: right;
 }
 
-.cartMoney span {
+
+.amounts p:last-of-type {
   font-weight: bold;
+  border-top: 2px solid #252422;
 }
+
 
 @media screen and (max-width: 480px)  {
   .cartItem {

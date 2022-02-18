@@ -29,7 +29,7 @@ function ShopCart() {
 
 
     // useEffect so that each time an item is added to the cart, the "cart bubble" is updated
-        // Also calculates the cart total every time an ittem is added or removed
+    // Also calculates the cart total every time an ittem is added or removed
     useEffect(() => {
         setCartNumber(items.length);
 
@@ -173,10 +173,18 @@ function ShopCart() {
                         </ul> {/* /cartList */}
 
                         <div className="cartMoney">
-                            <p className="cartSubtotal">Subtotal: <span>{cartSubtotal}</span></p>
-                            <p className="cartTax">Tax: <span>{cartTax}</span></p>
-                            <p className="cartShipping">Shipping: <span>{cartShipping}</span></p>
-                            <p className="cartTotal">Cart Total: <span>{cartTotal}</span></p>
+                            <div className="titles">
+                                <p className="cartSubtotal">Subtotal: </p>
+                                <p className="cartTax">Tax: </p>
+                                <p className="cartShipping">Shipping: </p>
+                                <p className="cartTotal">Cart Total: </p>
+                            </div>
+                            <div className="amounts">
+                                <p>$ {cartSubtotal}</p>
+                                <p>$ {cartTax}</p>
+                                <p>$ {cartShipping}</p>
+                                <p>$ {cartTotal}</p>
+                            </div>
                         </div>
 
                     </div> {/* /shopCart  */}
