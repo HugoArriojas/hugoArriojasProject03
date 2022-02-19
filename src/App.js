@@ -18,7 +18,7 @@ function App() {
   const handleCategory = (cat) => {
     setCategoryInput(cat);
   }
-
+  
   // Handle currency selection from sideNav component
   const handleCurrency = (cur) => {
     setCurrency(cur);
@@ -28,15 +28,17 @@ function App() {
   return (
     <div className="App">
       <HeaderFooter />
-      <ShopCart/>
+      <ShopCart
+        currency={currency}      
+        />
 
       <main>
         <SideNav
           handleCurrency={handleCurrency}
           handleCategory={handleCategory}
-        />
+          />
         <ProductSection
-          currency={currency}
+          currency={currency}      
           categoryInput={categoryInput}
         />
       </main>

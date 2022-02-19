@@ -10,26 +10,9 @@ function ProductContainers(props) {
     // Holds the description open state
     const [descOpen, setDescOpen] = useState(false);
 
-    // holds the selected item image
-    const [itemImg, setItemImg] = useState("")
-    // holds the selected item title
-    const [itemTitle, setItemTitle] = useState("")
-    // holds the selected item price
-    const [itemPrice, setItemPrice] = useState("")
-    const [itemRating, setItemRating] = useState("")
-    const [itemDesc, setItemDesc] = useState("")
-
-
     // Toggles the descOpen from true to false or vice versa every time the button is clicked
-    const toggleShowDesc = (item) => {
+    const toggleShowDesc = () => {
         setDescOpen(!descOpen);
-        if (descOpen === false) {
-            setItemImg(item.currentTarget.firstChild.firstChild.currentSrc)
-            setItemTitle(item.currentTarget.firstChild.firstChild.attributes.alt.value)
-            setItemPrice(item.currentTarget.childNodes[1].childNodes[1].childNodes[0].firstChild.data)
-            setItemRating(item.currentTarget.childNodes[1].childNodes[1].childNodes[1].children[0].innerText)
-            setItemDesc(item.currentTarget.childNodes[1].childNodes[1].childNodes[2].innerText)
-        }
     }
 
     // Handle Add To Cart function
@@ -39,11 +22,11 @@ function ProductContainers(props) {
         const dbRef = ref(database);
 
         let cartItem = {
-            title: itemTitle,
-            image: itemImg,
-            price: itemPrice,
-            rating: itemRating,
-            desc: itemDesc
+            title: props.title,
+            image: props.image,
+            price: props.price,
+            rating: props.rating,
+            desc: props.description
         }
         // push the value of the `selected item` state to the database
         push(dbRef, cartItem);

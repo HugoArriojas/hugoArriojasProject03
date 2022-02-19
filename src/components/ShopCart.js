@@ -5,7 +5,7 @@ import firebase from "./firebase";
 import "../stylesheets/ShopCart.css"
 import CartDetails from "./CartDetails";
 
-function ShopCart() {
+function ShopCart(props) {
     // Holds the description open state
     const [cartOpen, setCartOpen] = useState(false);
     // Holds the items in the cart
@@ -33,18 +33,30 @@ function ShopCart() {
     useEffect(() => {
         setCartNumber(items.length);
 
-        // Takes the prices in the cart and removes all text except decimals and coverts the remaining string to a number
-        let cartPricesArray = items.map(item =>
+        // Takes the prices in the cart and removes all text except decimals and coverts the remaining string to a number, removing the extra text
+        const cartPricesArray = items.map(item => 
             Number(item.name.price.replace(/[^\d.]/g, ''))
         );
+
         // Array of cartPrices is reduced to a total with 2 decimal points
         let cartPriceAddition = cartPricesArray.reduce((prevValue, currValue) => prevValue + currValue, 0).toFixed(2)
+
+
+        // if (props.currency === "usd") {
+        //     currentPrice = `$${(product.price).toFixed(2)} (USD)`
+        //   } else if (props.currency === "cad") {
+        //     currentPrice = `$${(product.price * 1.26).toFixed(2)} (CAD)`
+        //   } else {
+        //     currentPrice = `£${(product.price * 0.74).toFixed(2)} (GBP)`
+        //   }
+        
         // Cart total, taxes, and shipping are set
         setCartSubtotal(cartPriceAddition)
         setCartTax((cartPriceAddition * 0.15).toFixed(2))
         setCartShipping((cartPriceAddition * 0.05).toFixed(2))
         setCartTotal((cartPriceAddition * 1.2).toFixed(2))
     }, [items])
+
 
 
     // Opens and closes the cart based on click
@@ -131,7 +143,7 @@ function ShopCart() {
                                                     <div className="cartBubble">
                                                         <p className="cartPrice" id="cartPrice">{item.name.price}</p>
                                                     </div>
-                                                    <p className="descNull">{item.name.rating}</p>
+                                                    <p className="descNull">{item.name.rating} ★</p>
                                                     <p className="descNull">{item.name.desc}</p>
                                                     <button className="cartDetails"
                                                         onClick={detailButton}
@@ -174,16 +186,16 @@ function ShopCart() {
 
                         <div className="cartMoney">
                             <div className="titles">
-                                <p className="cartSubtotal">Subtotal: </p>
-                                <p className="cartTax">Tax: </p>
-                                <p className="cartShipping">Shipping: </p>
-                                <p className="cartTotal">Cart Total: </p>
+                                <p className="cartSubtotal">Subtotal: $</p>
+                                <p className="cartTax">Tax: $</p>
+                                <p className="cartShipping">Shipping: $</p>
+                                <p className="cartTotal">Cart Total: $</p>
                             </div>
                             <div className="amounts">
-                                <p>$ {cartSubtotal}</p>
-                                <p>$ {cartTax}</p>
-                                <p>$ {cartShipping}</p>
-                                <p>$ {cartTotal}</p>
+                                <p>{cartSubtotal}</p>
+                                <p>{cartTax}</p>
+                                <p>{cartShipping}</p>
+                                <p>{cartTotal}</p>
                             </div>
                         </div>
 
