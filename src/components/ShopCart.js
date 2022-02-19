@@ -41,7 +41,7 @@ function ShopCart(props) {
         // Array of cartPrices is reduced to a total with 2 decimal points
         let cartPriceAddition = cartPricesArray.reduce((prevValue, currValue) => prevValue + currValue, 0).toFixed(2)
 
-
+        // Need to add conversion for cart totals re: currency type chosen
         // if (props.currency === "usd") {
         //     currentPrice = `$${(product.price).toFixed(2)} (USD)`
         //   } else if (props.currency === "cad") {
